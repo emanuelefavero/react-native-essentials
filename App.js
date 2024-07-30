@@ -39,7 +39,11 @@ export default function App() {
           <Button title='Add Todo' />
         </View>
         <View>
-          <Text>Todos</Text>
+          <Text
+            style={[styles.title, colorScheme === 'dark' && styles.darkTitle]}
+          >
+            Todos
+          </Text>
         </View>
       </View>
     </SafeAreaView>
@@ -47,7 +51,7 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  // dark mode utils
+  // Dark mode utils
   darkBackground: {
     backgroundColor: '#000',
   },
@@ -55,8 +59,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgb(28, 28, 30)',
     color: '#fff',
   },
+  darkTitle: {
+    color: '#fff',
+  },
 
-  // app
+  // App
   appSafeArea: {
     flex: 1,
     backgroundColor: 'rgb(242, 242, 247)',
@@ -69,7 +76,8 @@ const styles = StyleSheet.create({
   },
 
   addTodoContainer: {
-    marginTop: 16,
+    // marginTop: 16,
+    marginBottom: 16,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -83,5 +91,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
     borderRadius: 10,
     marginRight: 2,
+  },
+
+  title: {
+    fontSize: 32,
+    fontWeight: 'bold',
   },
 })
