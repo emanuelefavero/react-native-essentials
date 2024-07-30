@@ -27,7 +27,10 @@ export default function App() {
         ]}
       >
         <View style={{ marginTop: 16 }}>
-          <TextInput placeholder='New Todo' style={styles.input} />
+          <TextInput
+            placeholder='New Todo'
+            style={[styles.input, colorScheme === 'dark' && styles.darkInput]}
+          />
           <Button title='Add Todo' />
         </View>
         <View>
@@ -43,22 +46,24 @@ const styles = StyleSheet.create({
   darkBackground: {
     backgroundColor: '#000',
   },
+  darkInput: {
+    backgroundColor: 'rgb(28, 28, 30)',
+  },
 
   // app
   appSafeArea: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'rgb(242, 242, 247)',
   },
 
   appContainer: {
     flex: 1,
     padding: 16,
-    backgroundColor: '#fff',
+    backgroundColor: 'rgb(242, 242, 247)',
   },
 
   input: {
-    borderWidth: 1,
-    borderColor: '#dcdcdc',
+    backgroundColor: 'rgb(227, 227, 232)',
     padding: 8,
     fontSize: 16,
     borderRadius: 12,
