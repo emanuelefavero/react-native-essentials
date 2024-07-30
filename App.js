@@ -1,38 +1,40 @@
-import { StatusBar } from 'expo-status-bar'
-import { StyleSheet, Text, View, Button } from 'react-native'
+// import { StatusBar } from 'expo-status-bar'
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  TextInput,
+  SafeAreaView,
+} from 'react-native'
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text style={[styles.text, styles.title]}>Hello</Text>
-      <Text style={styles.text}>World</Text>
-      <Button
-        title='Press me'
-        onPress={() => alert('Button Pressed!')}
-        color='#a855f7'
-        accessibilityLabel='Press this button to show an alert'
-      />
-
-      <StatusBar style='light' backgroundColor='#070923' />
-    </View>
+    <SafeAreaView style={{ flex: 1 }}>
+      <View style={styles.appContainer}>
+        <View style={{ marginTop: 16 }}>
+          <TextInput placeholder='New Todo' style={styles.input} />
+          <Button title='Add Todo' />
+        </View>
+        <View>
+          <Text>Todos</Text>
+        </View>
+      </View>
+    </SafeAreaView>
   )
 }
 
 const styles = StyleSheet.create({
-  container: {
+  appContainer: {
     flex: 1,
-    backgroundColor: '#070923',
-    alignItems: 'center',
-    justifyContent: 'center',
+    padding: 16,
   },
-  text: {
-    color: '#cbd5e1',
-    fontWeight: 'semibold',
-    fontSize: 32,
-  },
-  title: {
-    color: '#a855f7',
-    fontWeight: 'bold',
-    fontSize: 48,
+
+  input: {
+    borderWidth: 1,
+    borderColor: '#dcdcdc',
+    padding: 8,
+    fontSize: 16,
+    borderRadius: 12,
   },
 })
