@@ -26,9 +26,14 @@ export default function App() {
           colorScheme === 'dark' && styles.darkBackground,
         ]}
       >
-        <View style={{ marginTop: 16 }}>
+        <View style={styles.addTodoContainer}>
           <TextInput
             placeholder='New Todo'
+            placeholderTextColor={
+              colorScheme === 'dark'
+                ? 'rgb(129, 129, 136)'
+                : 'rgb(145, 145, 152)'
+            }
             style={[styles.input, colorScheme === 'dark' && styles.darkInput]}
           />
           <Button title='Add Todo' />
@@ -42,12 +47,13 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  // utils
+  // dark mode utils
   darkBackground: {
     backgroundColor: '#000',
   },
   darkInput: {
     backgroundColor: 'rgb(28, 28, 30)',
+    color: '#fff',
   },
 
   // app
@@ -62,10 +68,20 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgb(242, 242, 247)',
   },
 
+  addTodoContainer: {
+    marginTop: 16,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+
   input: {
+    flex: 1,
     backgroundColor: 'rgb(227, 227, 232)',
+    color: 'rgb(0, 0, 0)',
     padding: 8,
     fontSize: 16,
-    borderRadius: 12,
+    borderRadius: 10,
+    marginRight: 2,
   },
 })
