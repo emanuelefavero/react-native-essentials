@@ -20,11 +20,7 @@ export default function App() {
   ])
   const [inputText, setInputText] = useState('')
 
-  function addTodoInputHandler(text) {
-    setInputText(text)
-  }
-
-  function addTodoHandler() {
+  function handleAddTodo() {
     if (inputText.trim() === '') return
 
     setTodos((prevTodos) => {
@@ -36,6 +32,7 @@ export default function App() {
         ...prevTodos,
       ]
     })
+    setInputText('')
   }
 
   return (
@@ -58,7 +55,8 @@ export default function App() {
         {/* Add Todo */}
         <View style={styles.addTodoContainer}>
           <TextInput
-            onChangeText={addTodoInputHandler}
+            value={inputText}
+            onChangeText={(text) => setInputText(text)}
             placeholder='New Todo'
             placeholderTextColor={
               colorScheme === 'dark'
@@ -68,7 +66,7 @@ export default function App() {
             clearButtonMode='while-editing'
             style={[styles.input, colorScheme === 'dark' && styles.darkInput]}
           />
-          <Button title='Add Todo' onPress={addTodoHandler} />
+          <Button title='Add Todo' onPress={handleAddTodo} />
         </View>
 
         {/* Todos */}
