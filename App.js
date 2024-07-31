@@ -3,6 +3,7 @@ import {
   StyleSheet,
   Text,
   View,
+  ScrollView,
   Button,
   TextInput,
   SafeAreaView,
@@ -39,13 +40,13 @@ export default function App() {
           />
           <Button title='Add Todo' />
         </View>
-        <View>
+        <ScrollView style={styles.todosContainer}>
           <Text
             style={[styles.title, colorScheme === 'dark' && styles.darkTitle]}
           >
             Todos
           </Text>
-        </View>
+        </ScrollView>
       </View>
     </SafeAreaView>
   )
@@ -76,12 +77,14 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgb(242, 242, 247)',
   },
 
+  // Add Todo
   addTodoContainer: {
-    // marginTop: 16,
-    marginBottom: 16,
+    paddingBottom: 16,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    // borderBottomWidth: 1,
+    // borderBottomColor: 'rgba(255, 255, 255, 0.1)',
   },
 
   input: {
@@ -92,6 +95,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
     borderRadius: 10,
     marginRight: 2,
+  },
+
+  // Todos
+  todosContainer: {
+    flex: 1,
+    paddingTop: 16,
   },
 
   title: {
