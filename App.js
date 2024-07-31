@@ -34,6 +34,7 @@ export default function App() {
                 ? 'rgb(129, 129, 136)'
                 : 'rgb(145, 145, 152)'
             }
+            clearButtonMode='while-editing'
             style={[styles.input, colorScheme === 'dark' && styles.darkInput]}
           />
           <Button title='Add Todo' />
