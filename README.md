@@ -21,3 +21,7 @@ This is a repository for testing React Native features
 - [React](https://reactjs.org/)
 - [React Native](https://reactnative.dev/)
 - [Expo](https://docs.expo.dev/get-started/introduction/)
+
+## License
+
+- [MIT](LICENSE.md)
