@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { StatusBar } from 'expo-status-bar'
 import {
   StyleSheet,
@@ -13,6 +14,30 @@ import {
 export default function App() {
   const colorScheme = useColorScheme()
 
+  const [todos, setTodos] = useState([
+    { id: Math.random().toString(), value: 'Work' },
+    { id: Math.random().toString(), value: 'Eat' },
+  ])
+  const [inputText, setInputText] = useState('')
+
+  function addTodoInputHandler(text) {
+    setInputText(text)
+  }
+
+  function addTodoHandler() {
+    if (inputText.trim() === '') return
+
+    setTodos((prevTodos) => {
+      return [
+        {
+          id: Math.random().toString(),
+          value: inputText,
+        },
+        ...prevTodos,
+      ]
+    })
+  }
+
   return (
     <SafeAreaView
       style={[
@@ -20,15 +45,20 @@ export default function App() {
         colorScheme === 'dark' && styles.darkBackground,
       ]}
     >
+      {/* Status Bar */}
       <StatusBar style='auto' translucent />
+
+      {/* App */}
       <View
         style={[
           styles.appContainer,
           colorScheme === 'dark' && styles.darkBackground,
         ]}
       >
+        {/* Add Todo */}
         <View style={styles.addTodoContainer}>
           <TextInput
+            onChangeText={addTodoInputHandler}
             placeholder='New Todo'
             placeholderTextColor={
               colorScheme === 'dark'
@@ -38,14 +68,25 @@ export default function App() {
             clearButtonMode='while-editing'
             style={[styles.input, colorScheme === 'dark' && styles.darkInput]}
           />
-          <Button title='Add Todo' />
+          <Button title='Add Todo' onPress={addTodoHandler} />
         </View>
+
+        {/* Todos */}
         <ScrollView style={styles.todosContainer}>
           <Text
             style={[styles.title, colorScheme === 'dark' && styles.darkTitle]}
           >
             Todos
           </Text>
+
+          {todos.map((todo) => (
+            <Text
+              key={todo.id}
+              style={[styles.todo, colorScheme === 'dark' && styles.darkTodo]}
+            >
+              • {todo.value}
+            </Text>
+          ))}
         </ScrollView>
       </View>
     </SafeAreaView>
@@ -62,6 +103,9 @@ const styles = StyleSheet.create({
     color: '#fff',
   },
   darkTitle: {
+    color: '#fff',
+  },
+  darkTodo: {
     color: '#fff',
   },
 
@@ -106,5 +150,11 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 32,
     fontWeight: 'bold',
+    marginBottom: 16,
+  },
+
+  todo: {
+    fontSize: 20,
+    marginVertical: 4,
   },
 })
