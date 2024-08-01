@@ -10,13 +10,14 @@ import {
   SafeAreaView,
   useColorScheme,
 } from 'react-native'
+import uuid from 'react-native-uuid'
 
 export default function App() {
   const colorScheme = useColorScheme()
 
   const [todos, setTodos] = useState([
-    { id: Math.random().toString(), value: 'Work' },
-    { id: Math.random().toString(), value: 'Eat' },
+    { id: uuid.v4(), value: 'Work' },
+    { id: uuid.v4(), value: 'Eat' },
   ])
   const [inputText, setInputText] = useState('')
 
@@ -26,7 +27,7 @@ export default function App() {
     setTodos((prevTodos) => {
       return [
         {
-          id: Math.random().toString(),
+          id: uuid.v4(),
           value: inputText,
         },
         ...prevTodos,
