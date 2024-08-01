@@ -77,16 +77,23 @@ export default function App() {
           <Text
             style={[styles.title, colorScheme === 'dark' && styles.darkTitle]}
           >
-            Todos
+            Todo
           </Text>
 
           {todos.map((todo) => (
-            <Text
+            <View
               key={todo.id}
-              style={[styles.todo, colorScheme === 'dark' && styles.darkTodo]}
+              style={[
+                styles.todoContainer,
+                colorScheme === 'dark' && styles.darkTodoContainer,
+              ]}
             >
-              • {todo.value}
-            </Text>
+              <Text
+                style={[styles.todo, colorScheme === 'dark' && styles.darkTodo]}
+              >
+                {todo.value}
+              </Text>
+            </View>
           ))}
         </ScrollView>
       </View>
@@ -104,7 +111,11 @@ const styles = StyleSheet.create({
     color: '#fff',
   },
   darkTitle: {
-    color: '#fff',
+    color: '#22c55e',
+  },
+  darkTodoContainer: {
+    borderBottomWidth: 1,
+    borderBottomColor: 'rgba(255, 255, 255, 0.12)',
   },
   darkTodo: {
     color: '#fff',
@@ -149,13 +160,19 @@ const styles = StyleSheet.create({
   },
 
   title: {
+    color: '#22c55e',
     fontSize: 32,
     fontWeight: 'bold',
-    marginBottom: 16,
+    marginBottom: 12,
+  },
+
+  todoContainer: {
+    borderBottomWidth: 1,
+    borderBottomColor: 'rgba(0, 0, 0, 0.08)',
   },
 
   todo: {
     fontSize: 20,
-    marginVertical: 4,
+    marginVertical: 8,
   },
 })
