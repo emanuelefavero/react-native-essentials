@@ -65,6 +65,8 @@ export default function App() {
                 : 'rgb(145, 145, 152)'
             }
             clearButtonMode='while-editing'
+            onSubmitEditing={handleAddTodo}
+            returnKeyType='done'
             style={[styles.input, colorScheme === 'dark' && styles.darkInput]}
           />
           <Button title='Add Todo' onPress={handleAddTodo} />
