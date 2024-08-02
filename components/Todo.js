@@ -1,7 +1,9 @@
-import { Text, View } from 'react-native'
+import { Text, View, useColorScheme } from 'react-native'
 import styles from '../Layout.styles'
 
-export default function Todo({ todo, colorScheme }) {
+export default function Todo({ todo }) {
+  const colorScheme = useColorScheme()
+
   return (
     <View
       key={todo.id}

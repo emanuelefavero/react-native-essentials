@@ -19,27 +19,21 @@ import Todo from './components/Todo'
 SplashScreen.preventAutoHideAsync()
 
 export default function Layout() {
+  const colorScheme = useColorScheme() // dark mode
+  const dispatch = useDispatch() // redux dispatch
+
   // Load fonts
   const [loaded, error] = useFonts({
     'SF Pro Rounded': require('./assets/fonts/SF-Pro-Rounded-Bold.otf'),
   })
-  // ---
-
-  // Dark mode
-  const colorScheme = useColorScheme()
-
-  // Redux
-  const todos = useSelector((state) => state.todos.todos)
-  const dispatch = useDispatch()
 
   // Todos
+  const todos = useSelector((state) => state.todos.todos) // redux state
   const [inputText, setInputText] = useState('')
 
   function handleAddTodo() {
     if (inputText.trim() === '') return
-
-    dispatch(addTodo(inputText))
-
+    dispatch(addTodo(inputText)) // redux action
     setInputText('')
   }
 
@@ -96,9 +90,7 @@ export default function Layout() {
         {/* Todos */}
         <FlatList
           data={todos}
-          renderItem={({ item: todo }) => (
-            <Todo todo={todo} colorScheme={colorScheme} />
-          )}
+          renderItem={({ item: todo }) => <Todo todo={todo} />}
           keyExtractor={(todo) => todo.id}
           style={styles.todosContainer}
           alwaysBounceVertical={false}
