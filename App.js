@@ -12,7 +12,7 @@ import { StatusBar } from 'expo-status-bar'
 import { useFonts } from 'expo-font'
 import * as SplashScreen from 'expo-splash-screen'
 import uuid from 'react-native-uuid'
-import styles from './styles'
+import styles from './App.styles'
 import Todo from './components/Todo'
 import { initialTodos } from './data/initialTodos'
 

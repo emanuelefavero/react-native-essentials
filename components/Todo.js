@@ -1,5 +1,5 @@
 import { Text, View } from 'react-native'
-import styles from '../styles'
+import styles from '../App.styles'
 
 export default function Todo({ todo, colorScheme }) {
   return (
