@@ -62,10 +62,6 @@ const styles = StyleSheet.create({
     paddingTop: 16,
   },
 
-  todosContainer: {
-    flex: 1,
-  },
-
   todoContainer: {
     borderBottomWidth: 1,
     borderBottomColor: 'rgba(0, 0, 0, 0.08)',

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import {
   Text,
   View,
@@ -14,8 +14,8 @@ import * as SplashScreen from 'expo-splash-screen'
 import { useSelector, useDispatch } from 'react-redux'
 import { addTodo } from './features/todos/todosSlice'
 import { setNewTodoInput } from './features/todos/newTodoInputSlice'
-import styles from './Layout.styles'
-import Todo from './components/Todo'
+import styles from './styles'
+import Todos from './components/Todos'
 
 SplashScreen.preventAutoHideAsync()
 
@@ -87,13 +87,7 @@ export default function Layout() {
         </Text>
 
         {/* Todos */}
-        <FlatList
-          data={todos}
-          renderItem={({ item: todo }) => <Todo todo={todo} />}
-          keyExtractor={(todo) => todo.id}
-          style={styles.todosContainer}
-          alwaysBounceVertical={false}
-        />
+        <Todos />
       </View>
     </SafeAreaView>
   )
