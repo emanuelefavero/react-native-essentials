@@ -13,6 +13,7 @@ import { useFonts } from 'expo-font'
 import * as SplashScreen from 'expo-splash-screen'
 import { useSelector, useDispatch } from 'react-redux'
 import { addTodo } from './features/todos/todosSlice'
+import { setNewTodoInput } from './features/todos/newTodoInputSlice'
 import styles from './Layout.styles'
 import Todo from './components/Todo'
 
@@ -21,20 +22,18 @@ SplashScreen.preventAutoHideAsync()
 export default function Layout() {
   const colorScheme = useColorScheme() // dark mode
   const dispatch = useDispatch() // redux dispatch
-
-  // Load fonts
   const [loaded, error] = useFonts({
     'SF Pro Rounded': require('./assets/fonts/SF-Pro-Rounded-Bold.otf'),
-  })
+  }) // load fonts
 
-  // Todos
-  const todos = useSelector((state) => state.todos.todos) // redux state
-  const [inputText, setInputText] = useState('')
+  // Todos - Redux
+  const todos = useSelector((state) => state.todos.todos)
+  const newTodoInput = useSelector((state) => state.newTodoInput)
 
   function handleAddTodo() {
-    if (inputText.trim() === '') return
-    dispatch(addTodo(inputText)) // redux action
-    setInputText('')
+    if (newTodoInput.trim() === '') return
+    dispatch(addTodo(newTodoInput)) // redux action
+    dispatch(setNewTodoInput(''))
   }
 
   // Hide splash screen when loaded or error
@@ -64,8 +63,8 @@ export default function Layout() {
         {/* Add Todo */}
         <View style={styles.addTodoContainer}>
           <TextInput
-            value={inputText}
-            onChangeText={(text) => setInputText(text)}
+            value={newTodoInput}
+            onChangeText={(text) => dispatch(setNewTodoInput(text))}
             placeholder='New Todo'
             placeholderTextColor={
               colorScheme === 'dark'
