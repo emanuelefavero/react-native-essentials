@@ -13,7 +13,7 @@ import { useFonts } from 'expo-font'
 import * as SplashScreen from 'expo-splash-screen'
 import { useSelector, useDispatch } from 'react-redux'
 import { addTodo } from './features/todos/todosSlice'
-import styles from './App.styles'
+import styles from './Layout.styles'
 import Todo from './components/Todo'
 
 SplashScreen.preventAutoHideAsync()
