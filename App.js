@@ -19,7 +19,7 @@ SplashScreen.preventAutoHideAsync()
 export default function App() {
   // Load fonts
   const [loaded, error] = useFonts({
-    'Nunito-ExtraBold': require('./assets/fonts/Nunito-ExtraBold.ttf'),
+    'SF Pro Rounded': require('./assets/fonts/SF-Pro-Rounded-Bold.otf'),
   })
   // ---
 
@@ -179,11 +179,10 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    fontFamily: 'Nunito-ExtraBold',
+    fontFamily: 'SF Pro Rounded',
     color: '#22c55e',
     fontSize: 32,
     fontWeight: 800,
-    letterSpacing: -0.2,
     marginBottom: 12,
   },
 
