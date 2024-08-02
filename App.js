@@ -1,5 +1,4 @@
-import { useState } from 'react'
-import { StatusBar } from 'expo-status-bar'
+import { useState, useEffect } from 'react'
 import {
   StyleSheet,
   Text,
@@ -10,11 +9,24 @@ import {
   SafeAreaView,
   useColorScheme,
 } from 'react-native'
+import { StatusBar } from 'expo-status-bar'
+import { useFonts } from 'expo-font'
+import * as SplashScreen from 'expo-splash-screen'
 import uuid from 'react-native-uuid'
 
+SplashScreen.preventAutoHideAsync()
+
 export default function App() {
+  // Load fonts
+  const [loaded, error] = useFonts({
+    'Nunito-ExtraBold': require('./assets/fonts/Nunito-ExtraBold.ttf'),
+  })
+  // ---
+
+  // Dark mode
   const colorScheme = useColorScheme()
 
+  // Todos
   const [todos, setTodos] = useState([
     { id: uuid.v4(), value: 'Work' },
     { id: uuid.v4(), value: 'Eat' },
@@ -35,6 +47,13 @@ export default function App() {
     })
     setInputText('')
   }
+
+  // Hide splash screen when loaded or error
+  useEffect(() => {
+    if (loaded || error) SplashScreen.hideAsync()
+  }, [loaded, error])
+
+  if (!loaded && !error) return null // return null when fonts are not loaded
 
   return (
     <SafeAreaView
@@ -160,9 +179,11 @@ const styles = StyleSheet.create({
   },
 
   title: {
+    fontFamily: 'Nunito-ExtraBold',
     color: '#22c55e',
     fontSize: 32,
-    fontWeight: 'bold',
+    fontWeight: 800,
+    letterSpacing: -0.2,
     marginBottom: 12,
   },
 
