@@ -1,4 +1,5 @@
-import styles from '@/styles'
+import styles from '@/styles/styles'
+import darkStyles from '@/styles/darkStyles'
 import { View, TextInput, Button, useColorScheme } from 'react-native'
 import { useSelector, useDispatch } from 'react-redux'
 import { addTodo } from '@/features/todos/todosSlice'
@@ -27,7 +28,7 @@ export default function AddTodo() {
         clearButtonMode='while-editing'
         onSubmitEditing={handleAddTodo}
         returnKeyType='done'
-        style={[styles.input, colorScheme === 'dark' && styles.darkInput]}
+        style={[styles.input, colorScheme === 'dark' && darkStyles.darkInput]}
       />
       <Button title='Add Todo' onPress={handleAddTodo} />
     </View>

@@ -1,33 +1,22 @@
-import styles from '@/styles'
-import { useEffect } from 'react'
+import styles from '@/styles/styles'
+import darkStyles from '@/styles/darkStyles'
 import { View, SafeAreaView, useColorScheme } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
-import { useFonts } from 'expo-font'
-import * as SplashScreen from 'expo-splash-screen'
+import useLoadFonts from '@/hooks/useLoadFonts'
 import Title from '@/components/Title'
 import Todos from '@/components/Todos'
 import AddTodo from '@/components/AddTodo'
 
-SplashScreen.preventAutoHideAsync()
-
 export default function Layout() {
   const colorScheme = useColorScheme() // dark mode
-  const [loaded, error] = useFonts({
-    'SF Pro Rounded': require('@/assets/fonts/SF-Pro-Rounded-Bold.otf'),
-  }) // load fonts
-
-  // Hide splash screen when loaded or error
-  useEffect(() => {
-    if (loaded || error) SplashScreen.hideAsync()
-  }, [loaded, error])
-
-  if (!loaded && !error) return null // return null when fonts are not loaded
+  const { loaded, error } = useLoadFonts() // load fonts
+  if (!loaded && !error) return null // show nothing while fonts are loading
 
   return (
     <SafeAreaView
       style={[
         styles.appSafeArea,
-        colorScheme === 'dark' && styles.darkBackground,
+        colorScheme === 'dark' && darkStyles.darkBackground,
       ]}
     >
       {/* Status Bar */}
@@ -37,7 +26,7 @@ export default function Layout() {
       <View
         style={[
           styles.appContainer,
-          colorScheme === 'dark' && styles.darkBackground,
+          colorScheme === 'dark' && darkStyles.darkBackground,
         ]}
       >
         <AddTodo />
