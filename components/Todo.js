@@ -1,5 +1,5 @@
+import styles from '@/styles'
 import { Text, View, useColorScheme } from 'react-native'
-import styles from '../styles'
 
 export default function Todo({ todo }) {
   const colorScheme = useColorScheme()

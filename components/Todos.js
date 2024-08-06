@@ -1,6 +1,6 @@
 import { FlatList, StyleSheet } from 'react-native'
 import { useSelector } from 'react-redux'
-import Todo from './Todo'
+import Todo from '@/components/Todo'
 
 export default function Todos() {
   const todos = useSelector((state) => state.todos.todos)

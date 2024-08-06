@@ -1,6 +1,6 @@
 import uuid from 'react-native-uuid'
 import { createSlice } from '@reduxjs/toolkit'
-import { initialTodos } from '../../data/initialTodos'
+import { initialTodos } from '@/data/initialTodos'
 
 const initialState = {
   todos: initialTodos,

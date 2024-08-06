@@ -1,4 +1,4 @@
-import styles from '../styles'
+import styles from '@/styles'
 import { Text, useColorScheme } from 'react-native'
 
 export default function Title() {

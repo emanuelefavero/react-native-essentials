@@ -1,6 +1,5 @@
 import { useEffect } from 'react'
 import {
-  Text,
   View,
   Button,
   TextInput,
@@ -11,11 +10,11 @@ import { StatusBar } from 'expo-status-bar'
 import { useFonts } from 'expo-font'
 import * as SplashScreen from 'expo-splash-screen'
 import { useSelector, useDispatch } from 'react-redux'
-import { addTodo } from './features/todos/todosSlice'
-import { setNewTodoInput } from './features/todos/newTodoInputSlice'
-import styles from './styles'
-import Title from './components/Title'
-import Todos from './components/Todos'
+import { addTodo } from '@/features/todos/todosSlice'
+import { setNewTodoInput } from '@/features/todos/newTodoInputSlice'
+import styles from '@/styles'
+import Title from '@/components/Title'
+import Todos from '@/components/Todos'
 
 SplashScreen.preventAutoHideAsync()
 
@@ -23,7 +22,7 @@ export default function Layout() {
   const colorScheme = useColorScheme() // dark mode
   const dispatch = useDispatch() // redux dispatch
   const [loaded, error] = useFonts({
-    'SF Pro Rounded': require('./assets/fonts/SF-Pro-Rounded-Bold.otf'),
+    'SF Pro Rounded': require('@/assets/fonts/SF-Pro-Rounded-Bold.otf'),
   }) // load fonts
 
   // Todos - Redux
