@@ -1,16 +1,17 @@
 import { StyleSheet } from 'react-native'
+import colors from '@/styles/colors'
 
 const styles = StyleSheet.create({
   // App
   appSafeArea: {
     flex: 1,
-    backgroundColor: 'rgb(242, 242, 247)',
+    backgroundColor: colors.background,
   },
 
   appContainer: {
     flex: 1,
     padding: 16,
-    backgroundColor: 'rgb(242, 242, 247)',
+    backgroundColor: colors.background,
   },
 
   // Add Todo
@@ -19,14 +20,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    // borderBottomWidth: 1,
-    // borderBottomColor: 'rgba(255, 255, 255, 0.1)',
   },
 
   input: {
     flex: 1,
-    backgroundColor: 'rgb(227, 227, 232)',
-    color: 'rgb(0, 0, 0)',
+    backgroundColor: colors.inputBackground,
+    color: colors.text,
     padding: 8,
     fontSize: 16,
     borderRadius: 10,
@@ -36,7 +35,7 @@ const styles = StyleSheet.create({
   // Todos
   title: {
     fontFamily: 'SF Pro Rounded',
-    color: '#22c55e',
+    color: colors.primary,
     fontSize: 32,
     fontWeight: 800,
     marginBottom: 12,
@@ -45,7 +44,7 @@ const styles = StyleSheet.create({
 
   todoContainer: {
     borderBottomWidth: 1,
-    borderBottomColor: 'rgba(0, 0, 0, 0.08)',
+    borderBottomColor: colors.border,
   },
 
   todo: {
