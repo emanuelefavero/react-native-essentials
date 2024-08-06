@@ -1,5 +1,3 @@
-// import styles from '@/styles/styles'
-// import dark from '@/styles/dark'
 import colors from '@/styles/colors'
 import { View, SafeAreaView, useColorScheme, StyleSheet } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
