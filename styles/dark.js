@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
 
-const darkStyles = StyleSheet.create({
+const dark = StyleSheet.create({
   background: {
     backgroundColor: '#000',
   },
@@ -20,4 +20,4 @@ const darkStyles = StyleSheet.create({
   },
 })
 
-export default darkStyles
+export default dark

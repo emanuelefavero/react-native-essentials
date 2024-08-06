@@ -1,5 +1,5 @@
 import styles from '@/styles/styles'
-import darkStyles from '@/styles/darkStyles'
+import dark from '@/styles/dark'
 import { View, SafeAreaView, useColorScheme } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
 import useLoadFonts from '@/hooks/useLoadFonts'
@@ -14,20 +14,14 @@ export default function Layout() {
 
   return (
     <SafeAreaView
-      style={[
-        styles.appSafeArea,
-        colorScheme === 'dark' && darkStyles.background,
-      ]}
+      style={[styles.appSafeArea, colorScheme === 'dark' && dark.background]}
     >
       {/* Status Bar */}
       <StatusBar style='auto' translucent />
 
       {/* App */}
       <View
-        style={[
-          styles.appContainer,
-          colorScheme === 'dark' && darkStyles.background,
-        ]}
+        style={[styles.appContainer, colorScheme === 'dark' && dark.background]}
       >
         <AddTodo />
         <Title />
