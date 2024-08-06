@@ -10,12 +10,10 @@ export default function Todo({ todo }) {
       key={todo.id}
       style={[
         styles.todoContainer,
-        colorScheme === 'dark' && styles.darkTodoContainer,
+        colorScheme === 'dark' && styles.todoContainer,
       ]}
     >
-      <Text
-        style={[styles.todo, colorScheme === 'dark' && darkStyles.darkTodo]}
-      >
+      <Text style={[styles.todo, colorScheme === 'dark' && darkStyles.todo]}>
         {todo.value}
       </Text>
     </View>

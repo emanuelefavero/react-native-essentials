@@ -28,7 +28,7 @@ export default function AddTodo() {
         clearButtonMode='while-editing'
         onSubmitEditing={handleAddTodo}
         returnKeyType='done'
-        style={[styles.input, colorScheme === 'dark' && darkStyles.darkInput]}
+        style={[styles.input, colorScheme === 'dark' && darkStyles.input]}
       />
       <Button title='Add Todo' onPress={handleAddTodo} />
     </View>

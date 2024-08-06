@@ -6,9 +6,7 @@ export default function Title() {
   const colorScheme = useColorScheme() // dark mode
 
   return (
-    <Text
-      style={[styles.title, colorScheme === 'dark' && darkStyles.darkTitle]}
-    >
+    <Text style={[styles.title, colorScheme === 'dark' && darkStyles.title]}>
       Todo
     </Text>
   )

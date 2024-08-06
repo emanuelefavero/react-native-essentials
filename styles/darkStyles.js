@@ -1,21 +1,21 @@
 import { StyleSheet } from 'react-native'
 
 const darkStyles = StyleSheet.create({
-  darkBackground: {
+  background: {
     backgroundColor: '#000',
   },
-  darkInput: {
+  input: {
     backgroundColor: 'rgb(28, 28, 30)',
     color: '#fff',
   },
-  darkTitle: {
+  title: {
     color: '#22c55e',
   },
-  darkTodoContainer: {
+  todoContainer: {
     borderBottomWidth: 1,
     borderBottomColor: 'rgba(255, 255, 255, 0.12)',
   },
-  darkTodo: {
+  todo: {
     color: '#fff',
   },
 })

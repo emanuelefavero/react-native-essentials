@@ -16,7 +16,7 @@ export default function Layout() {
     <SafeAreaView
       style={[
         styles.appSafeArea,
-        colorScheme === 'dark' && darkStyles.darkBackground,
+        colorScheme === 'dark' && darkStyles.background,
       ]}
     >
       {/* Status Bar */}
@@ -26,7 +26,7 @@ export default function Layout() {
       <View
         style={[
           styles.appContainer,
-          colorScheme === 'dark' && darkStyles.darkBackground,
+          colorScheme === 'dark' && darkStyles.background,
         ]}
       >
         <AddTodo />
