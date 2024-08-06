@@ -5,9 +5,6 @@ const dark = StyleSheet.create({
   background: {
     backgroundColor: colors.backgroundDark,
   },
-  title: {
-    color: colors.primary,
-  },
   todoContainer: {
     borderBottomWidth: 1,
     borderBottomColor: colors.borderDark,

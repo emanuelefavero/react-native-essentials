@@ -15,15 +15,6 @@ const styles = StyleSheet.create({
   },
 
   // Todos
-  title: {
-    fontFamily: 'SF Pro Rounded',
-    color: colors.primary,
-    fontSize: 32,
-    fontWeight: 800,
-    marginBottom: 12,
-    paddingTop: 16,
-  },
-
   todoContainer: {
     borderBottomWidth: 1,
     borderBottomColor: colors.border,
