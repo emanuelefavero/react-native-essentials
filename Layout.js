@@ -6,7 +6,6 @@ import {
   TextInput,
   SafeAreaView,
   useColorScheme,
-  FlatList,
 } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
 import { useFonts } from 'expo-font'
@@ -15,6 +14,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { addTodo } from './features/todos/todosSlice'
 import { setNewTodoInput } from './features/todos/newTodoInputSlice'
 import styles from './styles'
+import Title from './components/Title'
 import Todos from './components/Todos'
 
 SplashScreen.preventAutoHideAsync()
@@ -27,7 +27,6 @@ export default function Layout() {
   }) // load fonts
 
   // Todos - Redux
-  const todos = useSelector((state) => state.todos.todos)
   const newTodoInput = useSelector((state) => state.newTodoInput)
 
   function handleAddTodo() {
@@ -80,11 +79,7 @@ export default function Layout() {
         </View>
 
         {/* Title */}
-        <Text
-          style={[styles.title, colorScheme === 'dark' && styles.darkTitle]}
-        >
-          Todo
-        </Text>
+        <Title />
 
         {/* Todos */}
         <Todos />
