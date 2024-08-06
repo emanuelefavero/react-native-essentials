@@ -1,4 +1,5 @@
 import colors from '@/styles/colors'
+import fontSizes from '@/styles/fontSizes'
 import {
   View,
   TextInput,
@@ -44,18 +45,18 @@ export default function AddTodo() {
 
 const styles = StyleSheet.create({
   addTodoContainer: {
-    paddingBottom: 16,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    paddingBottom: 16,
   },
 
   input: {
-    flex: 1,
     backgroundColor: colors.inputBackground,
     color: colors.text,
+    fontSize: fontSizes.default,
+    flex: 1,
     padding: 8,
-    fontSize: 16,
     borderRadius: 10,
     marginRight: 2,
   },

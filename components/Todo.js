@@ -1,4 +1,5 @@
 import colors from '@/styles/colors'
+import fontSizes from '@/styles/fontSizes'
 import { Text, View, useColorScheme, StyleSheet } from 'react-native'
 
 export default function Todo({ todo }) {
@@ -28,7 +29,7 @@ const styles = StyleSheet.create({
   },
 
   todo: {
-    fontSize: 20,
+    fontSize: fontSizes.todo,
     marginVertical: 8,
   },
 })

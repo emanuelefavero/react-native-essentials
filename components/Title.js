@@ -1,4 +1,5 @@
 import colors from '@/styles/colors'
+import fontSizes from '@/styles/fontSizes'
 import { Text, StyleSheet } from 'react-native'
 
 export default function Title() {
@@ -11,7 +12,7 @@ const styles = StyleSheet.create({
   title: {
     fontFamily: 'SF Pro Rounded',
     color: colors.primary,
-    fontSize: 32,
+    fontSize: fontSizes.title,
     fontWeight: 800,
     marginBottom: 12,
     paddingTop: 16,
