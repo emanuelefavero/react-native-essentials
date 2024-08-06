@@ -5,10 +5,6 @@ const dark = StyleSheet.create({
   background: {
     backgroundColor: colors.backgroundDark,
   },
-  input: {
-    backgroundColor: colors.inputBackgroundDark,
-    color: colors.textDark,
-  },
   title: {
     color: colors.primary,
   },

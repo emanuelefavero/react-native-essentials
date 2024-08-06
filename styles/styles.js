@@ -14,24 +14,6 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background,
   },
 
-  // Add Todo
-  addTodoContainer: {
-    paddingBottom: 16,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-
-  input: {
-    flex: 1,
-    backgroundColor: colors.inputBackground,
-    color: colors.text,
-    padding: 8,
-    fontSize: 16,
-    borderRadius: 10,
-    marginRight: 2,
-  },
-
   // Todos
   title: {
     fontFamily: 'SF Pro Rounded',
