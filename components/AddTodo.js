@@ -52,10 +52,10 @@ const styles = StyleSheet.create({
   },
 
   input: {
+    flex: 1,
     backgroundColor: colors.inputBackground,
     color: colors.text,
     fontSize: fontSizes.default,
-    flex: 1,
     padding: 8,
     borderRadius: 10,
     marginRight: 2,
