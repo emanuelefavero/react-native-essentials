@@ -16,6 +16,8 @@ export default function Todos() {
   )
 }
 
+// ---
+
 const styles = StyleSheet.create({
   todosContainer: {
     flex: 1,
