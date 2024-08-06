@@ -1,6 +1,7 @@
-import styles from '@/styles/styles'
-import dark from '@/styles/dark'
-import { View, SafeAreaView, useColorScheme } from 'react-native'
+// import styles from '@/styles/styles'
+// import dark from '@/styles/dark'
+import colors from '@/styles/colors'
+import { View, SafeAreaView, useColorScheme, StyleSheet } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
 import useLoadFonts from '@/hooks/useLoadFonts'
 import Title from '@/components/Title'
@@ -14,14 +15,20 @@ export default function Layout() {
 
   return (
     <SafeAreaView
-      style={[styles.appSafeArea, colorScheme === 'dark' && dark.background]}
+      style={[
+        styles.appSafeArea,
+        colorScheme === 'dark' && darkStyles.appSafeArea,
+      ]}
     >
       {/* Status Bar */}
       <StatusBar style='auto' translucent />
 
       {/* App */}
       <View
-        style={[styles.appContainer, colorScheme === 'dark' && dark.background]}
+        style={[
+          styles.appContainer,
+          colorScheme === 'dark' && darkStyles.appContainer,
+        ]}
       >
         <AddTodo />
         <Title />
@@ -30,3 +37,28 @@ export default function Layout() {
     </SafeAreaView>
   )
 }
+
+// ---
+
+const styles = StyleSheet.create({
+  appSafeArea: {
+    flex: 1,
+    backgroundColor: colors.background,
+  },
+
+  appContainer: {
+    flex: 1,
+    padding: 16,
+    backgroundColor: colors.background,
+  },
+})
+
+const darkStyles = StyleSheet.create({
+  appSafeArea: {
+    backgroundColor: colors.backgroundDark,
+  },
+
+  appContainer: {
+    backgroundColor: colors.backgroundDark,
+  },
+})
