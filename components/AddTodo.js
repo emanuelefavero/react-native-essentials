@@ -17,8 +17,9 @@ export default function AddTodo() {
   const dispatch = useDispatch()
 
   function handleAddTodo() {
-    if (newTodoInput.trim() === '') return
-    dispatch(addTodo(newTodoInput)) // redux action
+    const trimmedNewTodoInput = newTodoInput.trim()
+    if (trimmedNewTodoInput === '') return
+    dispatch(addTodo(trimmedNewTodoInput)) // redux action
     dispatch(setNewTodoInput(''))
   }
 
