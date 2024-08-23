@@ -1,3 +1,4 @@
+import colors from '@/styles/colors'
 import {
   Modal,
   View,
@@ -74,16 +75,16 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(255, 255, 255, 0.7)', // semi-transparent background
+    backgroundColor: colors.modalBackground,
   },
   modalView: {
     width: 270,
     paddingHorizontal: 18,
     paddingVertical: 13,
-    backgroundColor: 'white',
+    backgroundColor: colors.modalViewBackground,
     borderRadius: 10,
     alignItems: 'center',
-    shadowColor: '#71717a',
+    shadowColor: colors.modalShadowColor,
     shadowOffset: {
       width: -1,
       height: 1,
@@ -101,7 +102,7 @@ const styles = StyleSheet.create({
   },
   modalText: {
     fontSize: 16,
-    color: '#71717a',
+    color: colors.modalTextColor,
     marginBottom: 12,
     textAlign: 'center',
   },
@@ -114,15 +115,15 @@ const styles = StyleSheet.create({
 
 const darkStyles = StyleSheet.create({
   centeredView: {
-    backgroundColor: 'rgba(0,0,0,0.75)',
+    backgroundColor: colors.modalBackgroundDark,
   },
   modalView: {
-    backgroundColor: 'rgb(28, 28, 30)',
+    backgroundColor: colors.modalViewBackgroundDark,
   },
   modalTitle: {
-    color: 'white',
+    color: colors.textDark,
   },
   modalText: {
-    color: 'rgb(129, 129, 136)',
+    color: colors.modalTextColorDark,
   },
 })

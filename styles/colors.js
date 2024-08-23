@@ -21,6 +21,16 @@ const pressedBackgroundDark = 'rgba(28, 28, 30, 0.5)'
 const border = 'rgba(0, 0, 0, 0.08)'
 const borderDark = 'rgba(255, 255, 255, 0.12)'
 
+// Modal
+const modalBackground = 'rgba(255, 255, 255, 0.7)'
+const modalBackgroundDark = 'rgba(0, 0, 0, 0.75)'
+const modalViewBackground = 'white'
+const modalViewBackgroundDark = 'rgb(28, 28, 30)'
+const modalShadowColor = '#71717a'
+const modalShadowColorDark = '#000'
+const modalTextColor = '#71717a'
+const modalTextColorDark = '#a1a1aa'
+
 // Export colors
 const colors = {
   primary,
@@ -35,6 +45,14 @@ const colors = {
   pressedBackgroundDark,
   border,
   borderDark,
+  modalBackground,
+  modalBackgroundDark,
+  modalViewBackground,
+  modalViewBackgroundDark,
+  modalShadowColor,
+  modalShadowColorDark,
+  modalTextColor,
+  modalTextColorDark,
 }
 
 export default colors
