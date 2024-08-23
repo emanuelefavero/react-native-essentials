@@ -32,8 +32,8 @@ export default function Layout() {
       >
         <AddTodo />
         <Title />
-        <Todos />
         <AreYouSureModal />
+        <Todos />
       </View>
     </SafeAreaView>
   )
