@@ -1,21 +1,26 @@
 import colors from '@/styles/colors'
 import fontSizes from '@/styles/fontSizes'
 import { View, Text, Pressable, StyleSheet, useColorScheme } from 'react-native'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { setShowAreYouSureModal } from '@/features/modal/showAreYouSureModalSlice'
 
 export default function Title() {
   const dispatch = useDispatch()
+  const todos = useSelector((state) => state.todos)
 
   return (
     <View style={styles.titleContainer}>
       <Text style={styles.title}>Todo</Text>
-      <Pressable
-        onPress={() => dispatch(setShowAreYouSureModal(true))}
-        style={({ pressed }) => pressed && { opacity: 0.5 }}
-      >
-        <Text style={styles.clearButtonText}>Clear All</Text>
-      </Pressable>
+
+      {/* Clear All Button (Opens Modal) */}
+      {todos.length > 0 && (
+        <Pressable
+          onPress={() => dispatch(setShowAreYouSureModal(true))}
+          style={({ pressed }) => pressed && { opacity: 0.5 }}
+        >
+          <Text style={styles.clearButtonText}>Clear All</Text>
+        </Pressable>
+      )}
     </View>
   )
 }
