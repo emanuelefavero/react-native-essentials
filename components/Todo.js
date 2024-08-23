@@ -1,6 +1,14 @@
 import colors from '@/styles/colors'
 import fontSizes from '@/styles/fontSizes'
-import { Text, View, Pressable, useColorScheme, StyleSheet } from 'react-native'
+import { useRef } from 'react'
+import {
+  Text,
+  View,
+  Pressable,
+  useColorScheme,
+  StyleSheet,
+  Animated,
+} from 'react-native'
 import { useDispatch } from 'react-redux'
 import { removeTodo } from '@/features/todos/todosSlice'
 
@@ -8,8 +16,41 @@ export default function Todo({ todo }) {
   const colorScheme = useColorScheme()
   const dispatch = useDispatch()
 
+  // Animated value for text color
+  const colorAnimation = useRef(new Animated.Value(0)).current
+
+  const handleRemoveTodo = () => {
+    const duration = 200
+
+    // Trigger the red color animation
+    Animated.sequence([
+      Animated.timing(colorAnimation, {
+        toValue: 1, // Animate to red
+        duration,
+        useNativeDriver: false, // required for color animation
+      }),
+      Animated.timing(colorAnimation, {
+        toValue: 0, // Animate back to original color
+        duration,
+        useNativeDriver: false,
+      }),
+    ]).start(() => {
+      // After animation, remove the todo
+      dispatch(removeTodo(todo.id))
+    })
+  }
+
+  // Interpolate the color animation
+  const interpolatedColor = colorAnimation.interpolate({
+    inputRange: [0, 1],
+    outputRange: [
+      colorScheme === 'dark' ? colors.textDark : colors.text,
+      'red',
+    ],
+  })
+
   return (
-    <Pressable onPress={() => dispatch(removeTodo(todo.id))}>
+    <Pressable onPress={handleRemoveTodo}>
       <View
         key={todo.id}
         style={[
@@ -17,9 +58,9 @@ export default function Todo({ todo }) {
           colorScheme === 'dark' && darkStyles.todoContainer,
         ]}
       >
-        <Text style={[styles.todo, colorScheme === 'dark' && darkStyles.todo]}>
+        <Animated.Text style={[styles.todo, { color: interpolatedColor }]}>
           {todo.value}
-        </Text>
+        </Animated.Text>
       </View>
     </Pressable>
   )
