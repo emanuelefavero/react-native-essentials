@@ -16,21 +16,22 @@ export default function Todo({ todo }) {
   const colorScheme = useColorScheme()
   const dispatch = useDispatch()
 
-  // Animated value for text color
+  // Create an animated value for the text color, set to 0
   const colorAnimation = useRef(new Animated.Value(0)).current
 
+  // TIP: In this handler, we animate the text color to red before removing the todo
   const handleRemoveTodo = () => {
-    const duration = 200
+    const duration = 200 // animation speed
 
     // Trigger the red color animation
     Animated.sequence([
       Animated.timing(colorAnimation, {
-        toValue: 1, // Animate to red
+        toValue: 1, // animate to red
         duration,
         useNativeDriver: false, // required for color animation
       }),
       Animated.timing(colorAnimation, {
-        toValue: 0, // Animate back to original color
+        toValue: 0, // animate back to original color
         duration,
         useNativeDriver: false,
       }),
@@ -40,7 +41,7 @@ export default function Todo({ todo }) {
     })
   }
 
-  // Interpolate the color animation
+  // Set the color of the text based on the animation value
   const interpolatedColor = colorAnimation.interpolate({
     inputRange: [0, 1],
     outputRange: [
