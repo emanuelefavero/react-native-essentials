@@ -50,7 +50,17 @@ export default function Todo({ todo }) {
   })
 
   return (
-    <Pressable onPress={handleRemoveTodo}>
+    <Pressable
+      onPress={handleRemoveTodo}
+      style={({ pressed }) =>
+        pressed && {
+          backgroundColor:
+            colorScheme === 'dark'
+              ? colors.pressedBackgroundDark
+              : colors.pressedBackground,
+        }
+      }
+    >
       <View
         key={todo.id}
         style={[
