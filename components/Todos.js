@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import Todo from '@/components/Todo'
 
 export default function Todos() {
-  const todos = useSelector((state) => state.todos.todos)
+  const todos = useSelector((state) => state.todos)
 
   return (
     <FlatList

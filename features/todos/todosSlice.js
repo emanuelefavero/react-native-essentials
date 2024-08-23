@@ -2,22 +2,13 @@ import uuid from 'react-native-uuid'
 import { createSlice } from '@reduxjs/toolkit'
 import { initialTodos } from '@/data/initialTodos'
 
-const initialState = {
-  todos: initialTodos,
-}
-
 export const todosSlice = createSlice({
   name: 'todos',
-  initialState,
+  initialState: initialTodos,
   reducers: {
+    // Add a todo at the top of the list
     addTodo: (state, action) => {
-      state.todos = [
-        {
-          id: uuid.v4(),
-          value: action.payload, // input text passed as payload
-        },
-        ...state.todos,
-      ]
+      return [{ id: uuid.v4(), value: action.payload }, ...state]
     },
   },
 })
