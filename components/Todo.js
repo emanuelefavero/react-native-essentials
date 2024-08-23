@@ -1,22 +1,27 @@
 import colors from '@/styles/colors'
 import fontSizes from '@/styles/fontSizes'
-import { Text, View, useColorScheme, StyleSheet } from 'react-native'
+import { Text, View, Pressable, useColorScheme, StyleSheet } from 'react-native'
+import { useDispatch } from 'react-redux'
+import { removeTodo } from '@/features/todos/todosSlice'
 
 export default function Todo({ todo }) {
   const colorScheme = useColorScheme()
+  const dispatch = useDispatch()
 
   return (
-    <View
-      key={todo.id}
-      style={[
-        styles.todoContainer,
-        colorScheme === 'dark' && darkStyles.todoContainer,
-      ]}
-    >
-      <Text style={[styles.todo, colorScheme === 'dark' && darkStyles.todo]}>
-        {todo.value}
-      </Text>
-    </View>
+    <Pressable onPress={() => dispatch(removeTodo(todo.id))}>
+      <View
+        key={todo.id}
+        style={[
+          styles.todoContainer,
+          colorScheme === 'dark' && darkStyles.todoContainer,
+        ]}
+      >
+        <Text style={[styles.todo, colorScheme === 'dark' && darkStyles.todo]}>
+          {todo.value}
+        </Text>
+      </View>
+    </Pressable>
   )
 }
 

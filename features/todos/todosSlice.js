@@ -10,9 +10,14 @@ export const todosSlice = createSlice({
     addTodo: (state, action) => {
       return [{ id: uuid.v4(), value: action.payload }, ...state]
     },
+
+    // Remove a todo by id
+    removeTodo: (state, action) => {
+      return state.filter((todo) => todo.id !== action.payload)
+    },
   },
 })
 
-export const { addTodo } = todosSlice.actions
+export const { addTodo, removeTodo } = todosSlice.actions
 
 export default todosSlice.reducer
