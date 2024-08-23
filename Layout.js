@@ -2,7 +2,6 @@ import colors from '@/styles/colors'
 import { View, SafeAreaView, useColorScheme, StyleSheet } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
 import useLoadFonts from '@/hooks/useLoadFonts'
-import { useSelector } from 'react-redux'
 import Title from '@/components/Title'
 import Todos from '@/components/Todos'
 import AddTodo from '@/components/AddTodo'
@@ -11,7 +10,6 @@ import AreYouSureModal from '@/components/AreYouSureModal'
 export default function Layout() {
   const colorScheme = useColorScheme() // dark mode
   const { loaded, error } = useLoadFonts() // load fonts
-  const showAreYourSureModal = useSelector((state) => state.showAreYouSureModal)
 
   if (!loaded && !error) return null // show nothing while fonts are loading
 
@@ -35,9 +33,7 @@ export default function Layout() {
         <AddTodo />
         <Title />
         <Todos />
-
-        {/* Are You Sure Modal */}
-        {showAreYourSureModal && <AreYouSureModal />}
+        <AreYouSureModal />
       </View>
     </SafeAreaView>
   )
