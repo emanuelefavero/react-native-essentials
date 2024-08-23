@@ -1,4 +1,5 @@
 import colors from '@/styles/colors'
+import fontSizes from '@/styles/fontSizes'
 import {
   Modal,
   View,
@@ -94,14 +95,14 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   modalTitle: {
-    fontSize: 20,
+    fontSize: fontSizes.modalTitle,
     fontWeight: 'bold',
     marginTop: 10,
     marginBottom: 16,
     textAlign: 'center',
   },
   modalText: {
-    fontSize: 16,
+    fontSize: fontSizes.default,
     color: colors.modalTextColor,
     marginBottom: 12,
     textAlign: 'center',
