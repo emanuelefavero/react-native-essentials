@@ -1,6 +1,6 @@
 import colors from '@/styles/colors'
 import fontSizes from '@/styles/fontSizes'
-import { View, Text, Pressable, StyleSheet } from 'react-native'
+import { View, Text, Pressable, StyleSheet, useColorScheme } from 'react-native'
 import { useDispatch } from 'react-redux'
 import { setShowAreYouSureModal } from '@/features/modal/showAreYouSureModalSlice'
 
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
   },
 
   clearButtonText: {
-    color: 'red',
-    fontSize: 18,
+    color: colors.danger,
+    fontSize: fontSizes.button,
   },
 })

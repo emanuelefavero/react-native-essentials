@@ -1,4 +1,5 @@
 const primary = '#22c55e'
+const danger = '#f43f5e'
 
 // Text
 const text = '#000'
@@ -23,6 +24,7 @@ const borderDark = 'rgba(255, 255, 255, 0.12)'
 // Export colors
 const colors = {
   primary,
+  danger,
   text,
   textDark,
   background,
