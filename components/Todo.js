@@ -2,7 +2,6 @@ import colors from '@/styles/colors'
 import fontSizes from '@/styles/fontSizes'
 import { useRef } from 'react'
 import {
-  Text,
   View,
   Pressable,
   useColorScheme,
@@ -46,7 +45,7 @@ export default function Todo({ todo }) {
     inputRange: [0, 1],
     outputRange: [
       colorScheme === 'dark' ? colors.textDark : colors.text,
-      'red',
+      colors.primary,
     ],
   })
 
