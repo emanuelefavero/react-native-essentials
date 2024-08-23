@@ -28,12 +28,19 @@ export default function AreYouSureModal() {
           styles.centeredView,
           colorScheme === 'dark' && darkStyles.centeredView,
         ]}
+        // Close the modal when clicking outside of it
+        onStartShouldSetResponder={() => {
+          dispatch(setShowAreYouSureModal(false))
+          return true
+        }}
       >
         <View
           style={[
             styles.modalView,
             colorScheme === 'dark' && darkStyles.modalView,
           ]}
+          // Prevent closing the modal when clicking inside of it
+          onTouchEnd={(e) => e.stopPropagation()}
         >
           <Text
             style={[
