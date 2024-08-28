@@ -19,6 +19,16 @@ export const todosSlice = createSlice({
       return state.filter((todo) => todo.id !== action.payload)
     },
 
+    // Complete a todo by id
+    completeTodo: (state, action) => {
+      return state.map((todo) => {
+        if (todo.id === action.payload) {
+          return { ...todo, completed: !todo.completed }
+        }
+        return todo
+      })
+    },
+
     // Delete all todos
     deleteAllTodos: () => {
       return []
