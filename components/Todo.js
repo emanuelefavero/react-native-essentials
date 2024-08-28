@@ -9,7 +9,7 @@ import {
   Animated,
 } from 'react-native'
 import { useDispatch } from 'react-redux'
-import { removeTodo } from '@/features/todos/todosSlice'
+import { completeTodo } from '@/features/todos/todosSlice'
 
 export default function Todo({ todo }) {
   const colorScheme = useColorScheme()
@@ -36,7 +36,7 @@ export default function Todo({ todo }) {
       }),
     ]).start(() => {
       // After animation, remove the todo
-      dispatch(removeTodo(todo.id))
+      dispatch(completeTodo(todo.id))
     })
   }
 
@@ -72,7 +72,7 @@ export default function Todo({ todo }) {
           style={[
             styles.todo,
             {
-              color: interpolatedColor,
+              color: todo.completed ? 'gray' : interpolatedColor,
               textDecorationLine: todo.completed ? 'line-through' : 'none',
             },
           ]}

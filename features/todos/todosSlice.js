@@ -14,11 +14,6 @@ export const todosSlice = createSlice({
       ]
     },
 
-    // Remove a todo by id
-    removeTodo: (state, action) => {
-      return state.filter((todo) => todo.id !== action.payload)
-    },
-
     // Complete a todo by id
     completeTodo: (state, action) => {
       return state.map((todo) => {
@@ -29,6 +24,11 @@ export const todosSlice = createSlice({
       })
     },
 
+    // Remove a todo by id
+    removeTodo: (state, action) => {
+      return state.filter((todo) => todo.id !== action.payload)
+    },
+
     // Delete all todos
     deleteAllTodos: () => {
       return []
@@ -36,6 +36,7 @@ export const todosSlice = createSlice({
   },
 })
 
-export const { addTodo, removeTodo, deleteAllTodos } = todosSlice.actions
+export const { addTodo, completeTodo, removeTodo, deleteAllTodos } =
+  todosSlice.actions
 
 export default todosSlice.reducer
