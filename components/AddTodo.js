@@ -15,6 +15,7 @@ import { setNewTodoInput } from '@/features/todos/newTodoInputSlice'
 export default function AddTodo() {
   const colorScheme = useColorScheme()
   const newTodoInput = useSelector((state) => state.newTodoInput)
+  const todos = useSelector((state) => state.todos)
   const dispatch = useDispatch()
 
   function handleAddTodo() {
@@ -34,6 +35,9 @@ export default function AddTodo() {
     } else if (trimmedNewTodoInput.length < minTodoLength) {
       alertTitle = 'Todo Too Short'
       alertMessage = `Please enter at least ${minTodoLength} characters`
+    } else if (todos.some((todo) => todo.value === trimmedNewTodoInput)) {
+      alertTitle = 'Duplicate Todo'
+      alertMessage = 'This todo already exists.'
     }
 
     if (alertTitle) {
