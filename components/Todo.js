@@ -1,6 +1,6 @@
 import colors from '@/styles/colors'
 import fontSizes from '@/styles/fontSizes'
-import { useRef } from 'react'
+import { useState, useRef } from 'react'
 import {
   View,
   Pressable,
@@ -14,6 +14,7 @@ import { completeTodo } from '@/features/todos/todosSlice'
 export default function Todo({ todo }) {
   const colorScheme = useColorScheme()
   const dispatch = useDispatch()
+  const [isPressed, setIsPressed] = useState(false)
 
   // Create an animated value for the text color, set to 0
   const colorAnimation = useRef(new Animated.Value(0)).current
@@ -51,7 +52,10 @@ export default function Todo({ todo }) {
 
   return (
     <Pressable
-      onPress={handleRemoveTodo}
+      onPress={() => {
+        handleRemoveTodo()
+        setIsPressed(true)
+      }}
       style={({ pressed }) =>
         pressed && {
           backgroundColor:
@@ -77,7 +81,15 @@ export default function Todo({ todo }) {
                   ? colors.textMutedDark
                   : colors.textMuted
                 : interpolatedColor,
-              textDecorationLine: todo.completed ? 'line-through' : 'none',
+
+              // If the todo is completed, apply a line-through style. Also, handle the case where the user is pressing the todo (e.g., remove line-through when completed and pressed)
+              textDecorationLine: todo.completed
+                ? isPressed
+                  ? 'none'
+                  : 'line-through'
+                : isPressed
+                ? 'line-through'
+                : 'none',
             },
           ]}
         >
