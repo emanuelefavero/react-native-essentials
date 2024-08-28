@@ -20,7 +20,17 @@ export default function Todos() {
       ListFooterComponent={() => (
         <>
           {incompleteTodos.length > 0 && completedTodos.length > 0 && (
-            <View style={styles.separator} />
+            <View
+              style={[
+                styles.separator,
+                {
+                  backgroundColor:
+                    colorScheme === 'dark'
+                      ? colors.separatorDark
+                      : colors.separator,
+                },
+              ]}
+            />
           )}
           {completedTodos.length > 0 && (
             <FlatList
@@ -68,6 +78,5 @@ const styles = StyleSheet.create({
   },
   separator: {
     height: 1,
-    backgroundColor: '#ccc',
   },
 })

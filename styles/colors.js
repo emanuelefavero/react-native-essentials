@@ -23,6 +23,10 @@ const pressedBackgroundDark = 'rgba(28, 28, 30, 0.5)'
 const border = 'rgba(0, 0, 0, 0.08)'
 const borderDark = 'rgba(255, 255, 255, 0.12)'
 
+// Separator
+const separator = 'rgba(212, 212, 216, 0.75)'
+const separatorDark = 'rgba(63, 63, 70, 0.75)'
+
 // Modal
 const modalBackground = 'rgba(255, 255, 255, 0.7)'
 const modalBackgroundDark = 'rgba(0, 0, 0, 0.75)'
@@ -49,6 +53,8 @@ const colors = {
   pressedBackgroundDark,
   border,
   borderDark,
+  separator,
+  separatorDark,
   modalBackground,
   modalBackgroundDark,
   modalViewBackground,
