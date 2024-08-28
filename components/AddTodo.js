@@ -11,36 +11,19 @@ import {
 import { useSelector, useDispatch } from 'react-redux'
 import { addTodo } from '@/features/todos/todosSlice'
 import { setNewTodoInput } from '@/features/todos/newTodoInputSlice'
+import useValidateTodo from '@/hooks/useValidateTodo'
 
 export default function AddTodo() {
   const colorScheme = useColorScheme()
   const newTodoInput = useSelector((state) => state.newTodoInput)
-  const todos = useSelector((state) => state.todos)
   const dispatch = useDispatch()
+  const { validate } = useValidateTodo()
 
   function handleAddTodo() {
-    const trimmedNewTodoInput = newTodoInput.trim()
-    const maxTodoLength = 128
-    const minTodoLength = 3
+    const { isValid, alertTitle, alertMessage, trimmedInput } =
+      validate(newTodoInput)
 
-    let alertTitle = ''
-    let alertMessage = ''
-
-    if (trimmedNewTodoInput.length === 0) {
-      alertTitle = 'Empty Todo'
-      alertMessage = 'Please enter a todo.'
-    } else if (trimmedNewTodoInput.length > maxTodoLength) {
-      alertTitle = 'Todo Too Long'
-      alertMessage = `Please keep the todo under ${maxTodoLength} characters.`
-    } else if (trimmedNewTodoInput.length < minTodoLength) {
-      alertTitle = 'Todo Too Short'
-      alertMessage = `Please enter at least ${minTodoLength} characters`
-    } else if (todos.some((todo) => todo.value === trimmedNewTodoInput)) {
-      alertTitle = 'Duplicate Todo'
-      alertMessage = 'This todo already exists.'
-    }
-
-    if (alertTitle) {
+    if (!isValid) {
       Alert.alert(alertTitle, alertMessage, [{ text: 'OK' }])
       return
     }
