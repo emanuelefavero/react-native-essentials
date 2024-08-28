@@ -20,10 +20,16 @@ export default function AddTodo() {
   function handleAddTodo() {
     const trimmedNewTodoInput = newTodoInput.trim()
 
-    if (trimmedNewTodoInput === '') {
-      Alert.alert('Please enter a todo', 'Todo cannot be empty', [
-        { text: 'OK' },
-      ])
+    let alertTitle = ''
+    let alertMessage = ''
+
+    if (trimmedNewTodoInput.length === 0) {
+      alertTitle = 'Empty Todo'
+      alertMessage = 'Please enter a todo.'
+    }
+
+    if (alertTitle) {
+      Alert.alert(alertTitle, alertMessage, [{ text: 'OK' }])
       return
     }
 
