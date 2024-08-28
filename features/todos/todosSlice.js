@@ -16,12 +16,16 @@ export const todosSlice = createSlice({
 
     // Complete a todo by id
     completeTodo: (state, action) => {
-      return state.map((todo) => {
+      // Toggle the completed state of the todo
+      const updatedTodos = state.map((todo) => {
         if (todo.id === action.payload) {
           return { ...todo, completed: !todo.completed }
         }
         return todo
       })
+
+      // Sort todos so that completed ones are at the bottom
+      return updatedTodos.sort((a, b) => a.completed - b.completed)
     },
 
     // Remove a todo by id
