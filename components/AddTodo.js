@@ -1,3 +1,4 @@
+import { Alert } from 'react-native'
 import colors from '@/styles/colors'
 import fontSizes from '@/styles/fontSizes'
 import {
@@ -18,7 +19,14 @@ export default function AddTodo() {
 
   function handleAddTodo() {
     const trimmedNewTodoInput = newTodoInput.trim()
-    if (trimmedNewTodoInput === '') return
+
+    if (trimmedNewTodoInput === '') {
+      Alert.alert('Please enter a todo', 'Todo cannot be empty', [
+        { text: 'OK' },
+      ])
+      return
+    }
+
     dispatch(addTodo(trimmedNewTodoInput)) // redux action
     dispatch(setNewTodoInput(''))
   }
