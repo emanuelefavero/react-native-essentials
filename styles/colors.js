@@ -4,6 +4,8 @@ const danger = '#f43f5e'
 // Text
 const text = '#000'
 const textDark = '#fff'
+const textMuted = '#a1a1aa'
+const textMutedDark = '#52525b'
 
 // Background
 const background = 'rgb(242, 242, 247)'
@@ -37,6 +39,8 @@ const colors = {
   danger,
   text,
   textDark,
+  textMuted,
+  textMutedDark,
   background,
   backgroundDark,
   inputBackground,

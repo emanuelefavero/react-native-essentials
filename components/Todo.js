@@ -72,7 +72,11 @@ export default function Todo({ todo }) {
           style={[
             styles.todo,
             {
-              color: todo.completed ? 'gray' : interpolatedColor,
+              color: todo.completed
+                ? colorScheme === 'dark'
+                  ? colors.textMutedDark
+                  : colors.textMuted
+                : interpolatedColor,
               textDecorationLine: todo.completed ? 'line-through' : 'none',
             },
           ]}
