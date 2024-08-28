@@ -19,6 +19,8 @@ export default function AddTodo() {
 
   function handleAddTodo() {
     const trimmedNewTodoInput = newTodoInput.trim()
+    const maxTodoLength = 128
+    const minTodoLength = 3
 
     let alertTitle = ''
     let alertMessage = ''
@@ -26,6 +28,12 @@ export default function AddTodo() {
     if (trimmedNewTodoInput.length === 0) {
       alertTitle = 'Empty Todo'
       alertMessage = 'Please enter a todo.'
+    } else if (trimmedNewTodoInput.length > maxTodoLength) {
+      alertTitle = 'Todo Too Long'
+      alertMessage = `Please keep the todo under ${maxTodoLength} characters.`
+    } else if (trimmedNewTodoInput.length < minTodoLength) {
+      alertTitle = 'Todo Too Short'
+      alertMessage = `Please enter at least ${minTodoLength} characters`
     }
 
     if (alertTitle) {
