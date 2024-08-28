@@ -19,7 +19,7 @@ export default function AddTodo() {
   const dispatch = useDispatch()
   const { validate } = useValidateTodo()
 
-  function handleAddTodo() {
+  const handleAddTodo = () => {
     const { isValid, alertTitle, alertMessage } = validate(newTodoInput)
 
     if (!isValid) {

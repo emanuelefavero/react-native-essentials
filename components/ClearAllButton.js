@@ -9,6 +9,7 @@ export default function ClearAllButton() {
   const todos = useSelector((state) => state.todos)
 
   if (todos.length === 0) return null
+
   return (
     <Pressable
       onPress={() => dispatch(setShowAreYouSureModal(true))}
