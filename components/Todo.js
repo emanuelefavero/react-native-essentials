@@ -68,7 +68,15 @@ export default function Todo({ todo }) {
           colorScheme === 'dark' && darkStyles.todoContainer,
         ]}
       >
-        <Animated.Text style={[styles.todo, { color: interpolatedColor }]}>
+        <Animated.Text
+          style={[
+            styles.todo,
+            {
+              color: interpolatedColor,
+              textDecorationLine: todo.completed ? 'line-through' : 'none',
+            },
+          ]}
+        >
           {todo.value}
         </Animated.Text>
       </View>

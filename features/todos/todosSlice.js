@@ -8,7 +8,10 @@ export const todosSlice = createSlice({
   reducers: {
     // Add a todo at the top of the list
     addTodo: (state, action) => {
-      return [{ id: uuid.v4(), value: action.payload }, ...state]
+      return [
+        { id: uuid.v4(), value: action.payload, completed: false },
+        ...state,
+      ]
     },
 
     // Remove a todo by id
