@@ -20,8 +20,7 @@ export default function AddTodo() {
   const { validate } = useValidateTodo()
 
   function handleAddTodo() {
-    const { isValid, alertTitle, alertMessage, trimmedInput } =
-      validate(newTodoInput)
+    const { isValid, alertTitle, alertMessage } = validate(newTodoInput)
 
     if (!isValid) {
       Alert.alert(alertTitle, alertMessage, [{ text: 'OK' }])
