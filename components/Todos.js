@@ -1,4 +1,5 @@
 import colors from '@/styles/colors'
+import fontSizes from '@/styles/fontSizes'
 import React from 'react'
 import { FlatList, View, Text, useColorScheme, StyleSheet } from 'react-native'
 import { useSelector } from 'react-redux'
@@ -41,7 +42,7 @@ export default function Todos() {
                 completedTodos.length > 0 ? (
                   <Text
                     style={[
-                      styles.header,
+                      styles.listHeader,
                       {
                         color:
                           colorScheme === 'dark'
@@ -70,9 +71,9 @@ const styles = StyleSheet.create({
   todosContainer: {
     flex: 1,
   },
-  header: {
+  listHeader: {
     fontFamily: 'SF Pro Rounded',
-    fontSize: 26,
+    fontSize: fontSizes.listHeader,
     fontWeight: 'bold',
     paddingVertical: 12,
   },

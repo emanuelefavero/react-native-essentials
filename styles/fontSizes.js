@@ -5,6 +5,7 @@ const fontSizes = {
   todo: 20,
   modalTitle: 20,
   title: 32,
+  listHeader: 24,
 }
 
 export default fontSizes
