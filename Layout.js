@@ -1,11 +1,7 @@
 import colors from '@/styles/colors'
-import { View, SafeAreaView, useColorScheme, StyleSheet } from 'react-native'
+import { SafeAreaView, useColorScheme, StyleSheet } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
 import useLoadFonts from '@/hooks/useLoadFonts'
-import Title from '@/components/Title'
-import Todos from '@/components/Todos'
-import AddTodo from '@/components/AddTodo'
-import AreYouSureModal from '@/components/AreYouSureModal'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import HomeScreen from '@/components/HomeScreen'
 import TodoList from '@/components/TodoList'
@@ -43,7 +39,7 @@ export default function Layout() {
       {/* Status Bar */}
       <StatusBar style='auto' translucent />
 
-      {/* App */}
+      {/* App Screens */}
       <Stack.Navigator>
         <Stack.Screen
           name='HomeScreen'
@@ -62,18 +58,6 @@ export default function Layout() {
           }}
         />
       </Stack.Navigator>
-
-      {/* <View
-        style={[
-          styles.appContainer,
-          colorScheme === 'dark' && darkStyles.appContainer,
-        ]}
-      >
-        <AddTodo />
-        <Title />
-        <AreYouSureModal />
-        <Todos />
-      </View> */}
     </SafeAreaView>
   )
 }
@@ -85,20 +69,10 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.background,
   },
-
-  // appContainer: {
-  //   flex: 1,
-  //   padding: 16,
-  //   backgroundColor: colors.background,
-  // },
 })
 
 const darkStyles = StyleSheet.create({
   appSafeArea: {
     backgroundColor: colors.backgroundDark,
   },
-
-  // appContainer: {
-  //   backgroundColor: colors.backgroundDark,
-  // },
 })
