@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
   titleContainer: {
     alignItems: 'center',
     // backgroundColor: 'gray',
+    marginTop: 8,
     marginBottom: 16,
   },
 
