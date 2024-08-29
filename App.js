@@ -1,12 +1,15 @@
 import { store } from '@/store'
 import { Provider } from 'react-redux'
+import { NavigationContainer } from '@react-navigation/native'
 
 import Layout from '@/Layout'
 
 export default function App() {
   return (
     <Provider store={store}>
-      <Layout />
+      <NavigationContainer>
+        <Layout />
+      </NavigationContainer>
     </Provider>
   )
 }
