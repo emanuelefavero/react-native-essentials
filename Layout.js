@@ -18,6 +18,21 @@ export default function Layout() {
 
   if (!loaded && !error) return null // show nothing while fonts are loading
 
+  const commonHeaderOptions = {
+    headerStyle: {
+      // Header background color
+      backgroundColor:
+        colorScheme === 'dark' ? colors.backgroundDark : colors.background,
+    },
+    // Header text color
+    headerTintColor: colorScheme === 'dark' ? colors.textDark : colors.text,
+
+    // Header text style
+    headerTitleStyle: {
+      fontWeight: 'bold',
+    },
+  }
+
   return (
     <SafeAreaView
       style={[
@@ -36,43 +51,14 @@ export default function Layout() {
           options={{
             title: 'Home',
             headerShown: false,
-            headerStyle: {
-              // Header background color
-              backgroundColor:
-                colorScheme === 'dark'
-                  ? colors.backgroundDark
-                  : colors.background,
-            },
-            // Header text color
-            headerTintColor:
-              colorScheme === 'dark' ? colors.textDark : colors.text,
-
-            // Header text style
-            headerTitleStyle: {
-              fontWeight: 'bold',
-            },
+            ...commonHeaderOptions,
           }}
         />
         <Stack.Screen
           name='TodoList'
           component={TodoList}
           options={{
-            // headerShown: false,
-            headerStyle: {
-              // Header background color
-              backgroundColor:
-                colorScheme === 'dark'
-                  ? colors.backgroundDark
-                  : colors.background,
-            },
-            // Header text color
-            headerTintColor:
-              colorScheme === 'dark' ? colors.textDark : colors.text,
-
-            // Header text style
-            headerTitleStyle: {
-              fontWeight: 'bold',
-            },
+            ...commonHeaderOptions,
           }}
         />
       </Stack.Navigator>
