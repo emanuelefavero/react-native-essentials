@@ -1,6 +1,6 @@
 import colors from '@/styles/colors'
 import { View, useColorScheme, StyleSheet } from 'react-native'
-import Title from '@/components/Title'
+import TodosTitle from '@/components/TodosTitle'
 import Todos from '@/components/Todos'
 import AddTodo from '@/components/AddTodo'
 import AreYouSureModal from '@/components/AreYouSureModal'
@@ -16,7 +16,7 @@ export default function TodoList() {
       ]}
     >
       <AddTodo />
-      <Title />
+      <TodosTitle />
       <AreYouSureModal />
       <Todos />
     </View>

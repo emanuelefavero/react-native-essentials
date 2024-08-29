@@ -3,7 +3,7 @@ import fontSizes from '@/styles/fontSizes'
 import { View, Text, StyleSheet } from 'react-native'
 import ClearAllButton from '@/components/ClearAllButton'
 
-export default function Title() {
+export default function TodosTitle() {
   return (
     <View style={styles.titleContainer}>
       <Text style={styles.title}>Todo</Text>
