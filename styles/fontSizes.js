@@ -6,6 +6,7 @@ const fontSizes = {
   modalTitle: 20,
   title: 32,
   listHeader: 24,
+  homeScreenTitle: 28,
 }
 
 export default fontSizes
