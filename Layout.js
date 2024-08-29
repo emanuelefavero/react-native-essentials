@@ -33,7 +33,25 @@ export default function Layout() {
         <Stack.Screen
           name='HomeScreen'
           component={HomeScreen}
-          options={{ title: 'Home', headerShown: false }}
+          options={{
+            title: 'Home',
+            headerShown: false,
+            headerStyle: {
+              // Header background color
+              backgroundColor:
+                colorScheme === 'dark'
+                  ? colors.backgroundDark
+                  : colors.background,
+            },
+            // Header text color
+            headerTintColor:
+              colorScheme === 'dark' ? colors.textDark : colors.text,
+
+            // Header text style
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          }}
         />
         <Stack.Screen
           name='TodoList'
