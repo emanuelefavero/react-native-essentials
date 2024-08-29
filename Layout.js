@@ -56,7 +56,24 @@ export default function Layout() {
         <Stack.Screen
           name='TodoList'
           component={TodoList}
-          // options={{ headerShown: false }}
+          options={{
+            // headerShown: false,
+            headerStyle: {
+              // Header background color
+              backgroundColor:
+                colorScheme === 'dark'
+                  ? colors.backgroundDark
+                  : colors.background,
+            },
+            // Header text color
+            headerTintColor:
+              colorScheme === 'dark' ? colors.textDark : colors.text,
+
+            // Header text style
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          }}
         />
       </Stack.Navigator>
 
