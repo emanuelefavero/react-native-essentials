@@ -8,6 +8,7 @@ import {
   StyleSheet,
   Animated,
 } from 'react-native'
+import * as Haptics from 'expo-haptics'
 import { useDispatch } from 'react-redux'
 import { completeTodo } from '@/features/todos/todosSlice'
 
@@ -37,6 +38,7 @@ export default function Todo({ todo }) {
       }),
     ]).start(() => {
       // After animation, remove the todo
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
       dispatch(completeTodo(todo.id))
     })
   }
@@ -53,6 +55,7 @@ export default function Todo({ todo }) {
   return (
     <Pressable
       onPress={() => {
+        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Rigid)
         handleCompleteTodo()
         setIsPressed(true)
       }}
