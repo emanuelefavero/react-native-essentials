@@ -8,6 +8,7 @@ import {
   useColorScheme,
   StyleSheet,
 } from 'react-native'
+import * as Haptics from 'expo-haptics'
 import { useSelector, useDispatch } from 'react-redux'
 import { setShowDeleteTodosModal } from '@/features/modal/showDeleteTodosModalSlice'
 import {
@@ -73,6 +74,8 @@ export default function DeleteTodosModal() {
               title='Delete'
               color='red'
               onPress={() => {
+                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy)
+
                 dispatch(
                   modalType === 'deleteAllTodos'
                     ? deleteAllTodos()
