@@ -15,10 +15,17 @@ import { deleteAllTodos } from '@/features/todos/todosSlice'
 export default function DeleteTodosModal() {
   const colorScheme = useColorScheme()
   const dispatch = useDispatch()
-  const showDeleteTodosModal = useSelector((state) => state.showDeleteTodosModal)
+  const showDeleteTodosModal = useSelector(
+    (state) => state.showDeleteTodosModal
+  )
+  const modalType = useSelector((state) => state.modalType)
 
   return (
-    <Modal visible={showDeleteTodosModal} animationType='slide' transparent={true}>
+    <Modal
+      visible={showDeleteTodosModal}
+      animationType='slide'
+      transparent={true}
+    >
       <View
         style={[
           styles.centeredView,
@@ -44,7 +51,7 @@ export default function DeleteTodosModal() {
               colorScheme === 'dark' && darkStyles.modalTitle,
             ]}
           >
-            Delete all todos?
+            Delete {modalType === 'deleteAllTodos' ? 'all' : 'completed'} todos?
           </Text>
           <Text
             style={[
