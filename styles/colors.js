@@ -1,6 +1,6 @@
 const primary = '#22c55e'
 const danger = '#f43f5e'
-const dangerMuted = 'rgba(244, 63, 94, 0.17)'
+const dangerMuted = 'rgba(244, 63, 94, 0.25)'
 const button = '#007aff' // iOS button color
 
 // Text
