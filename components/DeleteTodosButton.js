@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setShowDeleteTodosModal } from '@/features/modal/showDeleteTodosModalSlice'
 import { setModalType } from '@/features/modal/modalTypeSlice'
 
-export default function ClearAllButton() {
+export default function DeleteTodosButton({ type = 'all' }) {
   const dispatch = useDispatch()
   const todos = useSelector((state) => state.todos)
 
@@ -19,7 +19,9 @@ export default function ClearAllButton() {
       }}
       style={({ pressed }) => pressed && { opacity: 0.5 }}
     >
-      <Text style={styles.clearButtonText}>Clear All</Text>
+      <Text style={styles.deleteTodosButtonText}>
+        Clear {type === 'all' ? 'All' : 'Completed'}
+      </Text>
     </Pressable>
   )
 }
@@ -27,7 +29,7 @@ export default function ClearAllButton() {
 // ---
 
 const styles = StyleSheet.create({
-  clearButtonText: {
+  deleteTodosButtonText: {
     color: colors.danger,
     fontSize: fontSizes.button,
   },
