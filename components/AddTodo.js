@@ -4,7 +4,8 @@ import fontSizes from '@/styles/fontSizes'
 import {
   View,
   TextInput,
-  Button,
+  Text,
+  Pressable,
   useColorScheme,
   StyleSheet,
 } from 'react-native'
@@ -46,7 +47,11 @@ export default function AddTodo() {
         returnKeyType='done'
         style={[styles.input, colorScheme === 'dark' && darkStyles.input]}
       />
-      <Button title='Add Todo' onPress={handleAddTodo} />
+      <Pressable onPress={handleAddTodo}>
+        <Text style={{ color: colors.button, fontSize: fontSizes.button }}>
+          Add Todo
+        </Text>
+      </Pressable>
     </View>
   )
 }
@@ -68,7 +73,7 @@ const styles = StyleSheet.create({
     fontSize: fontSizes.default,
     padding: 8,
     borderRadius: 10,
-    marginRight: 2,
+    marginRight: 12,
   },
 })
 

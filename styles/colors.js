@@ -1,5 +1,6 @@
 const primary = '#22c55e'
 const danger = '#f43f5e'
+const button = '#007aff' // iOS button color
 
 // Text
 const text = '#000'
@@ -41,6 +42,7 @@ const modalTextColorDark = '#a1a1aa'
 const colors = {
   primary,
   danger,
+  button,
   text,
   textDark,
   textMuted,
