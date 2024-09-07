@@ -44,15 +44,33 @@ export default function Todos() {
       }).start()
     }
 
+    const animatedStyle = {
+      transform: [{ translateX }],
+    }
+
+    const redBackgroundOpacity = translateX.interpolate({
+      inputRange: [0, 100], // Animation starts showing the red background
+      outputRange: [0, 1], // Red background gradually appears as the user swipes
+      extrapolate: 'clamp',
+    })
+
     return (
-      <PanGestureHandler
-        onGestureEvent={onGestureEvent}
-        onHandlerStateChange={onHandlerStateChange}
-      >
-        <Animated.View style={{ transform: [{ translateX }] }}>
-          <Todo todo={todo} />
-        </Animated.View>
-      </PanGestureHandler>
+      <View>
+        {/* Red background view */}
+        <Animated.View
+          style={[styles.redBackground, { opacity: redBackgroundOpacity }]}
+        />
+
+        {/* Swiping view */}
+        <PanGestureHandler
+          onGestureEvent={onGestureEvent}
+          onHandlerStateChange={onHandlerStateChange}
+        >
+          <Animated.View style={animatedStyle}>
+            <Todo todo={todo} />
+          </Animated.View>
+        </PanGestureHandler>
+      </View>
     )
   }
 
@@ -94,6 +112,8 @@ export default function Todos() {
   )
 }
 
+// ---
+
 const styles = StyleSheet.create({
   todosContainer: {
     flex: 1,
@@ -101,5 +121,14 @@ const styles = StyleSheet.create({
 
   separator: {
     height: 1,
+  },
+
+  redBackground: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    backgroundColor: 'red',
   },
 })
