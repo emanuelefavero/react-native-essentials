@@ -1,10 +1,8 @@
 import colors from '@/styles/colors'
-import fontSizes from '@/styles/fontSizes'
-import React from 'react'
-import { FlatList, View, Text, useColorScheme, StyleSheet } from 'react-native'
+import { FlatList, View, useColorScheme, StyleSheet } from 'react-native'
 import { useSelector } from 'react-redux'
 import Todo from '@/components/Todo'
-import DeleteTodosButton from '@/components/DeleteTodosButton'
+import CompletedTodosHeader from '@/components/CompletedTodosHeader'
 
 export default function Todos() {
   const colorScheme = useColorScheme()
@@ -40,24 +38,7 @@ export default function Todos() {
               renderItem={({ item: todo }) => <Todo todo={todo} />}
               keyExtractor={(todo) => todo.id}
               ListHeaderComponent={
-                completedTodos.length > 0 ? (
-                  <View style={styles.listHeaderContainer}>
-                    <Text
-                      style={[
-                        styles.listHeader,
-                        {
-                          color:
-                            colorScheme === 'dark'
-                              ? colors.textDark
-                              : colors.text,
-                        },
-                      ]}
-                    >
-                      Completed
-                    </Text>
-                    <DeleteTodosButton type='completed' />
-                  </View>
-                ) : null
+                completedTodos.length > 0 ? <CompletedTodosHeader /> : null
               }
             />
           )}
@@ -75,17 +56,7 @@ const styles = StyleSheet.create({
   todosContainer: {
     flex: 1,
   },
-  listHeaderContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  listHeader: {
-    fontFamily: 'SF Pro Rounded',
-    fontSize: fontSizes.listHeader,
-    fontWeight: 'bold',
-    paddingVertical: 12,
-  },
+
   separator: {
     height: 1,
   },
