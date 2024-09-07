@@ -20,9 +20,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'flex-end',
-    // backgroundColor: 'gray',
     marginBottom: 16,
     paddingTop: 16,
+    // backgroundColor: 'gray',
   },
 
   title: {

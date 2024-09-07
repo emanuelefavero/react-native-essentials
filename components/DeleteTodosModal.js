@@ -95,6 +95,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: colors.modalBackground,
   },
+
   modalView: {
     width: 270,
     paddingHorizontal: 18,
@@ -111,6 +112,7 @@ const styles = StyleSheet.create({
     shadowRadius: 1,
     elevation: 5,
   },
+
   modalTitle: {
     fontSize: fontSizes.modalTitle,
     fontWeight: 'bold',
@@ -118,12 +120,14 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     textAlign: 'center',
   },
+
   modalText: {
     fontSize: fontSizes.default,
     color: colors.modalTextColor,
     marginBottom: 12,
     textAlign: 'center',
   },
+
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
