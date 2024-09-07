@@ -47,7 +47,10 @@ export default function AddTodo() {
         returnKeyType='done'
         style={[styles.input, colorScheme === 'dark' && darkStyles.input]}
       />
-      <Pressable onPress={handleAddTodo}>
+      <Pressable
+        onPress={handleAddTodo}
+        style={({ pressed }) => pressed && { opacity: 0.5 }}
+      >
         <Text style={{ color: colors.button, fontSize: fontSizes.button }}>
           Add Todo
         </Text>
