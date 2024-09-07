@@ -9,6 +9,7 @@ import {
   useColorScheme,
   StyleSheet,
 } from 'react-native'
+import * as Haptics from 'expo-haptics'
 import { useSelector, useDispatch } from 'react-redux'
 import { addTodo } from '@/features/todos/todosSlice'
 import { setNewTodoInput } from '@/features/todos/newTodoInputSlice'
@@ -29,6 +30,7 @@ export default function AddTodo() {
       return
     }
 
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
     dispatch(addTodo(trimmedNewTodoInput)) // redux action
     dispatch(setNewTodoInput(''))
   }
