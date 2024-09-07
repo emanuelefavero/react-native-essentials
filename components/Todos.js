@@ -66,7 +66,7 @@ export default function Todos() {
     })
 
     return (
-      <View style={styles.todoWrapper}>
+      <View>
         {/* Green background for left swipe */}
         <Animated.View
           style={[styles.greenBackground, { opacity: greenBackgroundOpacity }]}
@@ -135,11 +135,6 @@ const styles = StyleSheet.create({
 
   separator: {
     height: 1,
-  },
-
-  todoWrapper: {
-    position: 'relative',
-    marginVertical: 5,
   },
 
   redBackground: {
