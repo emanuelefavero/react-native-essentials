@@ -7,11 +7,11 @@ import {
   Animated,
 } from 'react-native'
 import { useSelector, useDispatch } from 'react-redux'
+import { PanGestureHandler } from 'react-native-gesture-handler'
+import * as Haptics from 'expo-haptics'
 import Todo from '@/components/Todo'
 import CompletedTodosHeader from '@/components/CompletedTodosHeader'
 import { deleteTodo, completeTodo } from '@/features/todos/todosSlice'
-import { PanGestureHandler } from 'react-native-gesture-handler'
-import React from 'react'
 
 export default function Todos() {
   const dispatch = useDispatch()
@@ -35,9 +35,11 @@ export default function Todos() {
       if (event.nativeEvent.translationX > 100) {
         // Trigger the deleteTodo action when swiped right
         dispatch(deleteTodo(todo.id))
+        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)
       } else if (event.nativeEvent.translationX < -100) {
         // Trigger the completeTodo action when swiped left
         dispatch(completeTodo(todo.id))
+        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
       }
 
       // Reset the translationX to its original position
