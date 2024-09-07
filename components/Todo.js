@@ -70,6 +70,12 @@ export default function Todo({ todo }) {
         style={[
           styles.todoContainer,
           colorScheme === 'dark' && darkStyles.todoContainer,
+          {
+            backgroundColor:
+              colorScheme === 'dark'
+                ? colors.backgroundDark
+                : colors.background,
+          },
         ]}
       >
         <Animated.Text
