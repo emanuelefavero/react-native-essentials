@@ -1,4 +1,5 @@
 import colors from '@/styles/colors'
+import { useRef } from 'react'
 import {
   FlatList,
   View,
@@ -26,23 +27,33 @@ export default function Todos() {
   const renderCompletedTodo = ({ item: todo }) => {
     const translateX = new Animated.Value(0)
 
+    const swipeTriggerDistance = 125
+
     const onGestureEvent = Animated.event(
       [{ nativeEvent: { translationX: translateX } }],
-      { useNativeDriver: true }
+      {
+        useNativeDriver: true,
+        listener: (event) => {
+          const swipeDistance = event.nativeEvent.translationX
+
+          // Trigger haptics and dispatch action when swipe distance is met
+          if (swipeDistance > swipeTriggerDistance) {
+            Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)
+            dispatch(deleteTodo(todo.id))
+          } else if (swipeDistance < -swipeTriggerDistance) {
+            Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
+            dispatch(completeTodo(todo.id))
+          }
+          // Reset haptics trigger
+          else if (Math.abs(swipeDistance) < swipeTriggerDistance) {
+            return
+          }
+        },
+      }
     )
 
     const onHandlerStateChange = (event) => {
-      if (event.nativeEvent.translationX > 100) {
-        // Trigger the deleteTodo action when swiped right
-        dispatch(deleteTodo(todo.id))
-        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)
-      } else if (event.nativeEvent.translationX < -100) {
-        // Trigger the completeTodo action when swiped left
-        dispatch(completeTodo(todo.id))
-        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
-      }
-
-      // Reset the translationX to its original position
+      // Reset the translationX to its original position when swipe is complete
       Animated.spring(translateX, {
         toValue: 0,
         useNativeDriver: true,
