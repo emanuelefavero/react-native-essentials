@@ -20,7 +20,7 @@ export default function Todo({ todo }) {
   const colorAnimation = useRef(new Animated.Value(0)).current
 
   // TIP: In this handler, we animate the text color to red before removing the todo
-  const handleRemoveTodo = () => {
+  const handleCompleteTodo = () => {
     const duration = 200 // animation speed
 
     // Trigger the red color animation
@@ -53,7 +53,7 @@ export default function Todo({ todo }) {
   return (
     <Pressable
       onPress={() => {
-        handleRemoveTodo()
+        handleCompleteTodo()
         setIsPressed(true)
       }}
       style={({ pressed }) =>
