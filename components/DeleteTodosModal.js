@@ -10,7 +10,10 @@ import {
 } from 'react-native'
 import { useSelector, useDispatch } from 'react-redux'
 import { setShowDeleteTodosModal } from '@/features/modal/showDeleteTodosModalSlice'
-import { deleteAllTodos } from '@/features/todos/todosSlice'
+import {
+  deleteAllTodos,
+  deleteCompletedTodos,
+} from '@/features/todos/todosSlice'
 
 export default function DeleteTodosModal() {
   const colorScheme = useColorScheme()
@@ -70,7 +73,11 @@ export default function DeleteTodosModal() {
               title='Delete'
               color='red'
               onPress={() => {
-                dispatch(deleteAllTodos())
+                dispatch(
+                  modalType === 'deleteAllTodos'
+                    ? deleteAllTodos()
+                    : deleteCompletedTodos()
+                )
                 dispatch(setShowDeleteTodosModal(false))
               }}
             />

@@ -14,7 +14,11 @@ export default function DeleteTodosButton({ type = 'all' }) {
   return (
     <Pressable
       onPress={() => {
-        dispatch(setModalType('deleteAllTodos'))
+        dispatch(
+          setModalType(
+            type === 'all' ? 'deleteAllTodos' : 'deleteCompletedTodos'
+          )
+        )
         dispatch(setShowDeleteTodosModal(true))
       }}
       style={({ pressed }) => pressed && { opacity: 0.5 }}

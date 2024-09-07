@@ -4,6 +4,7 @@ import React from 'react'
 import { FlatList, View, Text, useColorScheme, StyleSheet } from 'react-native'
 import { useSelector } from 'react-redux'
 import Todo from '@/components/Todo'
+import DeleteTodosButton from '@/components/DeleteTodosButton'
 
 export default function Todos() {
   const colorScheme = useColorScheme()
@@ -40,19 +41,22 @@ export default function Todos() {
               keyExtractor={(todo) => todo.id}
               ListHeaderComponent={
                 completedTodos.length > 0 ? (
-                  <Text
-                    style={[
-                      styles.listHeader,
-                      {
-                        color:
-                          colorScheme === 'dark'
-                            ? colors.textDark
-                            : colors.text,
-                      },
-                    ]}
-                  >
-                    Completed
-                  </Text>
+                  <View>
+                    <Text
+                      style={[
+                        styles.listHeader,
+                        {
+                          color:
+                            colorScheme === 'dark'
+                              ? colors.textDark
+                              : colors.text,
+                        },
+                      ]}
+                    >
+                      Completed
+                    </Text>
+                    <DeleteTodosButton type='completed' />
+                  </View>
                 ) : null
               }
             />
