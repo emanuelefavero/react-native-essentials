@@ -41,7 +41,7 @@ export default function Todos() {
               keyExtractor={(todo) => todo.id}
               ListHeaderComponent={
                 completedTodos.length > 0 ? (
-                  <View>
+                  <View style={styles.listHeaderContainer}>
                     <Text
                       style={[
                         styles.listHeader,
@@ -74,6 +74,11 @@ export default function Todos() {
 const styles = StyleSheet.create({
   todosContainer: {
     flex: 1,
+  },
+  listHeaderContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   listHeader: {
     fontFamily: 'SF Pro Rounded',
