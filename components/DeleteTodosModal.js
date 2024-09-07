@@ -9,20 +9,16 @@ import {
   StyleSheet,
 } from 'react-native'
 import { useSelector, useDispatch } from 'react-redux'
-import { setShowAreYouSureModal } from '@/features/modal/showAreYouSureModalSlice'
+import { setShowDeleteTodosModal } from '@/features/modal/showDeleteTodosModalSlice'
 import { deleteAllTodos } from '@/features/todos/todosSlice'
 
-export default function AreYouSureModal() {
+export default function DeleteTodosModal() {
   const colorScheme = useColorScheme()
   const dispatch = useDispatch()
-  const showAreYourSureModal = useSelector((state) => state.showAreYouSureModal)
+  const showDeleteTodosModal = useSelector((state) => state.showDeleteTodosModal)
 
   return (
-    <Modal
-      visible={showAreYourSureModal}
-      animationType='slide'
-      transparent={true}
-    >
+    <Modal visible={showDeleteTodosModal} animationType='slide' transparent={true}>
       <View
         style={[
           styles.centeredView,
@@ -30,7 +26,7 @@ export default function AreYouSureModal() {
         ]}
         // Close the modal when clicking outside of it
         onStartShouldSetResponder={() => {
-          dispatch(setShowAreYouSureModal(false))
+          dispatch(setShowDeleteTodosModal(false))
           return true
         }}
       >
@@ -61,14 +57,14 @@ export default function AreYouSureModal() {
           <View style={styles.buttonContainer}>
             <Button
               title='Cancel'
-              onPress={() => dispatch(setShowAreYouSureModal(false))}
+              onPress={() => dispatch(setShowDeleteTodosModal(false))}
             />
             <Button
               title='Delete'
               color='red'
               onPress={() => {
                 dispatch(deleteAllTodos())
-                dispatch(setShowAreYouSureModal(false))
+                dispatch(setShowDeleteTodosModal(false))
               }}
             />
           </View>

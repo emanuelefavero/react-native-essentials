@@ -2,7 +2,7 @@ import colors from '@/styles/colors'
 import fontSizes from '@/styles/fontSizes'
 import { Text, Pressable, StyleSheet } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
-import { setShowAreYouSureModal } from '@/features/modal/showAreYouSureModalSlice'
+import { setShowDeleteTodosModal } from '@/features/modal/showDeleteTodosModalSlice'
 
 export default function ClearAllButton() {
   const dispatch = useDispatch()
@@ -12,7 +12,7 @@ export default function ClearAllButton() {
 
   return (
     <Pressable
-      onPress={() => dispatch(setShowAreYouSureModal(true))}
+      onPress={() => dispatch(setShowDeleteTodosModal(true))}
       style={({ pressed }) => pressed && { opacity: 0.5 }}
     >
       <Text style={styles.clearButtonText}>Clear All</Text>

@@ -3,7 +3,7 @@ import { View, useColorScheme, StyleSheet } from 'react-native'
 import TodosTitle from '@/components/TodosTitle'
 import Todos from '@/components/Todos'
 import AddTodo from '@/components/AddTodo'
-import AreYouSureModal from '@/components/AreYouSureModal'
+import DeleteTodosModal from '@/components/DeleteTodosModal'
 
 export default function TodoList() {
   const colorScheme = useColorScheme() // dark mode
@@ -17,7 +17,7 @@ export default function TodoList() {
     >
       <AddTodo />
       <TodosTitle />
-      <AreYouSureModal />
+      <DeleteTodosModal />
       <Todos />
     </View>
   )
