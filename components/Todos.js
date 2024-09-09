@@ -9,6 +9,7 @@ import {
 import { useSelector, useDispatch } from 'react-redux'
 import { PanGestureHandler } from 'react-native-gesture-handler'
 import * as Haptics from 'expo-haptics'
+import AntDesign from '@expo/vector-icons/AntDesign'
 import Todo from '@/components/Todo'
 import CompletedTodosHeader from '@/components/CompletedTodosHeader'
 import { deleteTodo, completeTodo } from '@/features/todos/todosSlice'
@@ -82,12 +83,16 @@ export default function Todos() {
         {/* Green background for left swipe */}
         <Animated.View
           style={[styles.greenBackground, { opacity: greenBackgroundOpacity }]}
-        />
+        >
+          <AntDesign name='arrowup' size={24} color='black' />
+        </Animated.View>
 
         {/* Red background for right swipe */}
         <Animated.View
           style={[styles.redBackground, { opacity: redBackgroundOpacity }]}
-        />
+        >
+          <AntDesign name='delete' size={24} color='black' />
+        </Animated.View>
 
         {/* Swiping view */}
         <PanGestureHandler
