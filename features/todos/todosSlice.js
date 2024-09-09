@@ -28,6 +28,16 @@ export const todosSlice = createSlice({
       return updatedTodos.sort((a, b) => a.completed - b.completed)
     },
 
+    // Edit a todo by id
+    editTodo: (state, action) => {
+      return state.map((todo) => {
+        if (todo.id === action.payload.id) {
+          return { ...todo, value: action.payload.value }
+        }
+        return todo
+      })
+    },
+
     // Delete a todo by id
     deleteTodo: (state, action) => {
       return state.filter((todo) => todo.id !== action.payload)
@@ -48,6 +58,7 @@ export const todosSlice = createSlice({
 export const {
   addTodo,
   completeTodo,
+  editTodo,
   deleteTodo,
   deleteAllTodos,
   deleteCompletedTodos,
