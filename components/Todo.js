@@ -85,10 +85,13 @@ export default function Todo({ todo }) {
           styles.todoContainer,
           colorScheme === 'dark' && darkStyles.todoContainer,
           {
-            backgroundColor:
-              colorScheme === 'dark'
-                ? colors.backgroundDark
-                : colors.background,
+            backgroundColor: isEditing
+              ? colorScheme === 'dark'
+                ? colors.backgroundEditingDark
+                : colors.backgroundEditing
+              : colorScheme === 'dark'
+              ? colors.backgroundDark
+              : colors.background,
           },
         ]}
       >

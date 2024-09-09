@@ -20,6 +20,10 @@ const inputBackgroundDark = 'rgb(28, 28, 30)'
 const pressedBackground = 'rgba(227, 227, 232, 0.25)'
 const pressedBackgroundDark = 'rgba(28, 28, 30, 0.5)'
 
+// Edit mode
+const backgroundEditing = 'rgba(228, 228, 231, 0.5)'
+const backgroundEditingDark = 'rgba(39, 39, 42, 0.6)'
+
 // Border
 const border = 'rgba(0, 0, 0, 0.08)'
 const borderDark = 'rgba(255, 255, 255, 0.12)'
@@ -53,6 +57,8 @@ const colors = {
   inputBackgroundDark,
   pressedBackground,
   pressedBackgroundDark,
+  backgroundEditing,
+  backgroundEditingDark,
   border,
   borderDark,
   separator,
