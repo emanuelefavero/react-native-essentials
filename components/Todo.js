@@ -47,6 +47,7 @@ export default function Todo({ todo }) {
 
   // Dispatch the editTodo action to Redux when editing is done
   const handleEditTodo = () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Soft)
     setIsEditing(false) // Exit editing mode
     dispatch(editTodo({ id: todo.id, value: newValue })) // Dispatch editTodo
   }
@@ -68,6 +69,7 @@ export default function Todo({ todo }) {
         setIsPressed(true)
       }}
       onLongPress={() => {
+        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
         setIsEditing(true) // Enter editing mode on long press
       }}
       style={({ pressed }) =>
