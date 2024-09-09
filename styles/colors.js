@@ -1,7 +1,5 @@
 const primary = '#22c55e'
-const primaryMuted = 'rgba(34, 197, 94, 0.25)'
 const danger = '#f43f5e'
-const dangerMuted = 'rgba(244, 63, 94, 0.25)'
 const button = '#007aff' // iOS button color
 
 // Text
@@ -43,9 +41,7 @@ const modalTextColorDark = '#a1a1aa'
 // Export colors
 const colors = {
   primary,
-  primaryMuted,
   danger,
-  dangerMuted,
   button,
   text,
   textDark,

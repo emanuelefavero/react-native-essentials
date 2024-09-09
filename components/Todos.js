@@ -84,14 +84,22 @@ export default function Todos() {
         <Animated.View
           style={[styles.greenBackground, { opacity: greenBackgroundOpacity }]}
         >
-          <AntDesign name='arrowup' size={24} color='black' />
+          <AntDesign
+            name='arrowup'
+            size={24}
+            color={colorScheme === 'dark' ? colors.text : colors.textDark}
+          />
         </Animated.View>
 
         {/* Red background for right swipe */}
         <Animated.View
           style={[styles.redBackground, { opacity: redBackgroundOpacity }]}
         >
-          <AntDesign name='delete' size={24} color='black' />
+          <AntDesign
+            name='delete'
+            size={24}
+            color={colorScheme === 'dark' ? colors.text : colors.textDark}
+          />
         </Animated.View>
 
         {/* Swiping view */}
@@ -160,7 +168,7 @@ const styles = StyleSheet.create({
     right: 0,
     top: 0,
     bottom: 0,
-    backgroundColor: colors.dangerMuted,
+    backgroundColor: colors.danger,
     justifyContent: 'center',
     alignItems: 'flex-start',
     paddingLeft: 20,
@@ -172,7 +180,7 @@ const styles = StyleSheet.create({
     right: 0,
     top: 0,
     bottom: 0,
-    backgroundColor: colors.primaryMuted,
+    backgroundColor: colors.primary,
     justifyContent: 'center',
     alignItems: 'flex-end',
     paddingRight: 20,
