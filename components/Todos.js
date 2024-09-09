@@ -26,9 +26,9 @@ export default function Todos() {
   // Swipe to delete or complete functionality for completed todos
   const renderCompletedTodo = ({ item: todo }) => {
     const translateX = new Animated.Value(0)
-
     const swipeTriggerDistance = 125
 
+    // Event handler for swipe gesture
     const onGestureEvent = Animated.event(
       [{ nativeEvent: { translationX: translateX } }],
       {
@@ -64,6 +64,13 @@ export default function Todos() {
       transform: [{ translateX }],
     }
 
+    // Scale icon size based on swipe distance
+    const iconSize = translateX.interpolate({
+      inputRange: [-100, 0, 100],
+      outputRange: [1.15, 1, 1.15],
+      extrapolate: 'clamp',
+    })
+
     // Red background for swipe right (delete)
     const redBackgroundOpacity = translateX.interpolate({
       inputRange: [0, 100],
@@ -84,22 +91,26 @@ export default function Todos() {
         <Animated.View
           style={[styles.greenBackground, { opacity: greenBackgroundOpacity }]}
         >
-          <AntDesign
-            name='arrowup'
-            size={24}
-            color={colorScheme === 'dark' ? colors.text : colors.textDark}
-          />
+          <Animated.Text style={{ transform: [{ scale: iconSize }] }}>
+            <AntDesign
+              name='arrowup'
+              size={24} // Base size
+              color={colorScheme === 'dark' ? colors.text : colors.textDark}
+            />
+          </Animated.Text>
         </Animated.View>
 
         {/* Red background for right swipe */}
         <Animated.View
           style={[styles.redBackground, { opacity: redBackgroundOpacity }]}
         >
-          <AntDesign
-            name='delete'
-            size={24}
-            color={colorScheme === 'dark' ? colors.text : colors.textDark}
-          />
+          <Animated.Text style={{ transform: [{ scale: iconSize }] }}>
+            <AntDesign
+              name='delete'
+              size={24} // Base size
+              color={colorScheme === 'dark' ? colors.text : colors.textDark}
+            />
+          </Animated.Text>
         </Animated.View>
 
         {/* Swiping view */}
