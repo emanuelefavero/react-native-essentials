@@ -1,5 +1,4 @@
 import colors from '@/styles/colors'
-import { useRef } from 'react'
 import {
   FlatList,
   View,
