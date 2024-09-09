@@ -23,8 +23,8 @@ export default function Todos() {
   const incompleteTodos = todos.filter((todo) => !todo.completed)
   const completedTodos = todos.filter((todo) => todo.completed)
 
-  // Swipe to delete or complete functionality for completed todos
-  const renderCompletedTodo = ({ item: todo }) => {
+  // Swipe to delete or complete functionality for todos
+  const renderTodoWithSwipe = ({ item: todo }) => {
     const translateX = new Animated.Value(0)
     const swipeTriggerDistance = 125
 
@@ -93,7 +93,7 @@ export default function Todos() {
         >
           <Animated.Text style={{ transform: [{ scale: iconSize }] }}>
             <AntDesign
-              name='arrowup'
+              name={todo.completed ? 'arrowup' : 'check'}
               size={24} // Base size
               color={colorScheme === 'dark' ? colors.text : colors.textDark}
             />
@@ -129,7 +129,7 @@ export default function Todos() {
   return (
     <FlatList
       data={incompleteTodos}
-      renderItem={({ item: todo }) => <Todo todo={todo} />}
+      renderItem={renderTodoWithSwipe}
       keyExtractor={(todo) => todo.id}
       ListFooterComponent={() => (
         <>
@@ -149,7 +149,7 @@ export default function Todos() {
           {completedTodos.length > 0 && (
             <FlatList
               data={completedTodos}
-              renderItem={renderCompletedTodo}
+              renderItem={renderTodoWithSwipe}
               keyExtractor={(todo) => todo.id}
               ListHeaderComponent={
                 completedTodos.length > 0 ? <CompletedTodosHeader /> : null
