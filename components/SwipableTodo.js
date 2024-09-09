@@ -57,6 +57,9 @@ export default function SwipableTodo({ todo, colorScheme }) {
       <PanGestureHandler
         onGestureEvent={onGestureEvent}
         onHandlerStateChange={onHandlerStateChange}
+        // Only activate the swipe gesture when the movement is horizontal
+        activeOffsetX={[-30, 30]} // Horizontal swipe sensitivity
+        activeOffsetY={[-100, 100]} // Allow vertical gestures to pass through
       >
         <Animated.View style={{ transform: [{ translateX }] }}>
           <Todo todo={todo} />
