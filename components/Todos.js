@@ -94,7 +94,7 @@ export default function Todos() {
           <Animated.Text style={{ transform: [{ scale: iconSize }] }}>
             <AntDesign
               name={todo.completed ? 'arrowup' : 'check'}
-              size={24} // Base size
+              size={22}
               color={colorScheme === 'dark' ? colors.text : colors.textDark}
             />
           </Animated.Text>
@@ -107,7 +107,7 @@ export default function Todos() {
           <Animated.Text style={{ transform: [{ scale: iconSize }] }}>
             <AntDesign
               name='delete'
-              size={24} // Base size
+              size={22}
               color={colorScheme === 'dark' ? colors.text : colors.textDark}
             />
           </Animated.Text>
