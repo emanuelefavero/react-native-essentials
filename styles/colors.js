@@ -21,7 +21,7 @@ const pressedBackground = 'rgba(227, 227, 232, 0.25)'
 const pressedBackgroundDark = 'rgba(28, 28, 30, 0.5)'
 
 // Edit mode
-const backgroundEditing = 'rgba(228, 228, 231, 0.5)'
+const backgroundEditing = 'rgba(228, 228, 231, 0.7)'
 const backgroundEditingDark = 'rgba(39, 39, 42, 0.6)'
 
 // Border

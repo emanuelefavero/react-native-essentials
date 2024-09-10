@@ -27,10 +27,10 @@ export default function Todo({ todo }) {
   const handleCompleteTodo = () => {
     const duration = 200 // animation speed
 
-    // Trigger the red color animation
+    // Animate background color on completion
     Animated.sequence([
       Animated.timing(backgroundColorAnimation, {
-        toValue: 1, // animate to red
+        toValue: 1, // To animated background color
         duration,
         useNativeDriver: false,
       }),
@@ -56,10 +56,13 @@ export default function Todo({ todo }) {
   const interpolatedBackgroundColor = backgroundColorAnimation.interpolate({
     inputRange: [0, 1],
     outputRange: [
-      colorScheme === 'dark' ? colors.backgroundDark : colors.background, // Normal background color
+      // Default background color
+      colorScheme === 'dark' ? colors.backgroundDark : colors.background,
+
+      // Animated background color
       colorScheme === 'dark'
-        ? colors.pressedBackgroundDark
-        : colors.pressedBackground, // Pressed background color
+        ? colors.backgroundEditingDark
+        : colors.backgroundEditing,
     ],
   })
 
@@ -77,14 +80,14 @@ export default function Todo({ todo }) {
       onPressIn={() => {
         Animated.timing(backgroundColorAnimation, {
           toValue: 1, // Start color animation
-          duration: 200,
+          duration: 500,
           useNativeDriver: false,
         }).start()
       }}
       onPressOut={() => {
         Animated.timing(backgroundColorAnimation, {
           toValue: 0, // Revert color animation
-          duration: 200,
+          duration: 150,
           useNativeDriver: false,
         }).start()
       }}
@@ -95,7 +98,11 @@ export default function Todo({ todo }) {
           styles.todoContainer,
           colorScheme === 'dark' && darkStyles.todoContainer,
           {
-            backgroundColor: interpolatedBackgroundColor, // Animated background color
+            backgroundColor: isEditing
+              ? colorScheme === 'dark'
+                ? colors.backgroundEditingDark
+                : colors.backgroundEditing
+              : interpolatedBackgroundColor, // Animated background color
           },
         ]}
       >
