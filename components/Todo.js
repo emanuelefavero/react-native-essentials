@@ -20,8 +20,8 @@ export default function Todo({ todo }) {
   const [isEditing, setIsEditing] = useState(false)
   const [newValue, setNewValue] = useState(todo.value)
 
-  // Create an animated value for the text color, set to 0
-  const colorAnimation = useRef(new Animated.Value(0)).current
+  // Create animated value for background color
+  const backgroundColorAnimation = useRef(new Animated.Value(0)).current
 
   // Handle todo completion
   const handleCompleteTodo = () => {
@@ -29,12 +29,12 @@ export default function Todo({ todo }) {
 
     // Trigger the red color animation
     Animated.sequence([
-      Animated.timing(colorAnimation, {
+      Animated.timing(backgroundColorAnimation, {
         toValue: 1, // animate to red
         duration,
         useNativeDriver: false,
       }),
-      Animated.timing(colorAnimation, {
+      Animated.timing(backgroundColorAnimation, {
         toValue: 0,
         duration,
         useNativeDriver: false,
@@ -52,12 +52,14 @@ export default function Todo({ todo }) {
     dispatch(editTodo({ id: todo.id, value: newValue })) // Dispatch editTodo
   }
 
-  // Set the color of the text based on the animation value
-  const interpolatedColor = colorAnimation.interpolate({
+  // Interpolated background color for press feedback
+  const interpolatedBackgroundColor = backgroundColorAnimation.interpolate({
     inputRange: [0, 1],
     outputRange: [
-      colorScheme === 'dark' ? colors.textDark : colors.text,
-      colors.primary,
+      colorScheme === 'dark' ? colors.backgroundDark : colors.background, // Normal background color
+      colorScheme === 'dark'
+        ? colors.pressedBackgroundDark
+        : colors.pressedBackground, // Pressed background color
     ],
   })
 
@@ -72,28 +74,28 @@ export default function Todo({ todo }) {
         Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
         setIsEditing(true) // Enter editing mode on long press
       }}
-      style={({ pressed }) =>
-        pressed && {
-          backgroundColor:
-            colorScheme === 'dark'
-              ? colors.pressedBackgroundDark
-              : colors.pressedBackground,
-        }
-      }
+      onPressIn={() => {
+        Animated.timing(backgroundColorAnimation, {
+          toValue: 1, // Start color animation
+          duration: 200,
+          useNativeDriver: false,
+        }).start()
+      }}
+      onPressOut={() => {
+        Animated.timing(backgroundColorAnimation, {
+          toValue: 0, // Revert color animation
+          duration: 200,
+          useNativeDriver: false,
+        }).start()
+      }}
     >
-      <View
+      <Animated.View
         key={todo.id}
         style={[
           styles.todoContainer,
           colorScheme === 'dark' && darkStyles.todoContainer,
           {
-            backgroundColor: isEditing
-              ? colorScheme === 'dark'
-                ? colors.backgroundEditingDark
-                : colors.backgroundEditing
-              : colorScheme === 'dark'
-              ? colors.backgroundDark
-              : colors.background,
+            backgroundColor: interpolatedBackgroundColor, // Animated background color
           },
         ]}
       >
@@ -121,7 +123,9 @@ export default function Todo({ todo }) {
                   ? colorScheme === 'dark'
                     ? colors.textMutedDark
                     : colors.textMuted
-                  : interpolatedColor,
+                  : colorScheme === 'dark'
+                  ? colors.textDark
+                  : colors.text,
 
                 textDecorationLine: todo.completed
                   ? isPressed
@@ -136,7 +140,7 @@ export default function Todo({ todo }) {
             {todo.value}
           </Animated.Text>
         )}
-      </View>
+      </Animated.View>
     </Pressable>
   )
 }
