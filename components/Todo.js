@@ -23,18 +23,21 @@ export default function Todo({ todo }) {
   // Create animated value for background color
   const backgroundColorAnimation = useRef(new Animated.Value(0)).current
 
+  // Create an animated value for the text color, set to 0
+  const colorAnimation = useRef(new Animated.Value(0)).current
+
   // Handle todo completion
   const handleCompleteTodo = () => {
-    const duration = 200 // animation speed
+    const duration = 150 // animation speed
 
-    // Animate background color on completion
+    // Trigger the color animation
     Animated.sequence([
-      Animated.timing(backgroundColorAnimation, {
-        toValue: 1, // To animated background color
+      Animated.timing(colorAnimation, {
+        toValue: 1, // animate to primary color
         duration,
         useNativeDriver: false,
       }),
-      Animated.timing(backgroundColorAnimation, {
+      Animated.timing(colorAnimation, {
         toValue: 0,
         duration,
         useNativeDriver: false,
@@ -63,6 +66,15 @@ export default function Todo({ todo }) {
       colorScheme === 'dark'
         ? colors.backgroundEditingDark
         : colors.backgroundEditing,
+    ],
+  })
+
+  // Set the color of the text based on the animation value
+  const interpolatedColor = colorAnimation.interpolate({
+    inputRange: [0, 1],
+    outputRange: [
+      colorScheme === 'dark' ? colors.textDark : colors.text,
+      colors.primary,
     ],
   })
 
@@ -130,9 +142,7 @@ export default function Todo({ todo }) {
                   ? colorScheme === 'dark'
                     ? colors.textMutedDark
                     : colors.textMuted
-                  : colorScheme === 'dark'
-                  ? colors.textDark
-                  : colors.text,
+                  : interpolatedColor, // Use interpolated color here
 
                 textDecorationLine: todo.completed
                   ? isPressed
